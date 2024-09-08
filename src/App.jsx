@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Container from "./components/ui/Container";
+import Navbar from "./components/layout/navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/HomePage";
+import Footer from "./components/layout/footer/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <div>kakaka</div>
-        </a>
-        <a href="https://react.dev" target="_blank">
-         
-        </a>
-      </div>
-      
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Container>
+        <Navbar />
+
+        <div className="">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pokemon" element={""} />
+            <Route path="/elite-exclusive" element={""} />
+            <Route path="/digimon" element={""} />
+            <Route path="/one-piece" element={""} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </Container>
+    </Router>
+  );
 }
 
-export default App
+export default App;
