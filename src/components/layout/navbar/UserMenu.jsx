@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { LoginIcon, SignupIcon, UserIcon } from "../../common/icons";
+import { useNavigate } from "react-router-dom";
 import MenuItem from "./MenuItem";
 
 
+
 const UserMenu = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const ToggleOpen = useCallback(() => {
@@ -28,12 +31,12 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem
-                onClick={""}
+                onClick={()=> navigate('/login')}
                 label="Login"
                 icon={<LoginIcon/>}
               />
               <MenuItem
-                onClick={""}
+                onClick={()=> navigate('/register')}
                 label="Signup"
                 icon={<SignupIcon/>}
               />
