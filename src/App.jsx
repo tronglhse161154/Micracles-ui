@@ -9,21 +9,19 @@ import Register from "./pages/Register";
 function App() {
   return (
     <Router>
-      <Container>
-        <Navbar />
-        <div className="">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/pokemon" element={""} />
-            <Route path="/elite-exclusive" element={""} />
-            <Route path="/digimon" element={""} />
-            <Route path="/one-piece" element={""} />
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
-          </Routes>
-        </div>
-        <Footer />
-      </Container>
+      <Navbar />
+      <div className="">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemon" element={""} />
+          <Route path="/elite-exclusive" element={""} />
+          <Route path="/digimon" element={""} />
+          <Route path="/one-piece" element={""} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </div>
+      <Footer />
     </Router>
   );
 }

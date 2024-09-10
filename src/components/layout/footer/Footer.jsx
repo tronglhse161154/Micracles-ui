@@ -14,7 +14,7 @@ const Footer = () => {
                 <Logo/>
               </Link>
               <p className="max-w-xs mt-4 text-sm text-black font-semibold">
-                Bids for what you desire.
+                Explore for what you desire.
               </p>
               <div className="flex mt-8 space-x-6 text-gray-600">
                 <a className="hover:opacity-75" href="#" target="_blank" rel="noreferrer">
