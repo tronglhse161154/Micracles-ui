@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "__Work_Sans_1fc36d", "__Work_Sans_Fallback_1fc36d";
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 700;
   margin: 0;
   padding: 0;
 

@@ -1,5 +1,6 @@
 import "./../../index.css";
 import { LeftVidIcon, RightVidIcon } from "../common/icons";
+import Logo from "../layout/navbar/Logo";
 import Button from "./Button";
 
 const BannerVd = () => {
@@ -36,6 +37,7 @@ const BannerVd = () => {
               <h4 class="font-semibold text-3xl text-white text-center text-shadow-lg shadow-black">
                 Welcome to Miracle Trading Card Game
               </h4>
+              <div className="h-[100px] md:h-[180px]"><Logo w="200" h="200"/></div>
             </div>
             <div className="flex flex-col w-full items-center md:flex-row gap-2 md:gap-3 md:px-12">
               <Button label="Shop now" />

@@ -1,11 +1,11 @@
 
 
-const Logo = () => {
+const Logo = ({w, h}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="100"
-      height="100"
+      width={w}
+      height={h}
       viewBox="0 0 500 500"
     >
       <g>
