@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
               <Link to="/" className="mr-5 h-6 sm:h-9">
-                <Logo/>
+                <Logo w="120" h="120"/>
               </Link>
               <p className="max-w-xs mt-4 text-sm text-black font-semibold">
                 Explore for what you desire.
