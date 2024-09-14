@@ -9,8 +9,10 @@ import ViewCard from "./pages/ViewCard";
 
 function App() {
   return (
+    <>
+    
     <Router>
-      <Navbar />
+    <Navbar />
       
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,8 +25,10 @@ function App() {
           <Route path="/viewcard" element={<ViewCard />} />
         </Routes>
       
-      <Footer />
+        <Footer />
     </Router>
+    
+    </>
   );
 }
 
