@@ -1,6 +1,5 @@
 import { Card, Row, Col } from "antd";
 import { Typography } from 'antd';
-// Sample product data
 const products = [
   {
     title: "Digimon Card Game",
