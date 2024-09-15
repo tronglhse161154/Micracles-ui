@@ -1,7 +1,6 @@
 import { Card, Row, Col, Button } from "antd";
 import { Typography } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-// Sample product data
 const products = [
   {
     title: "BANDAI NAMCO",
@@ -49,11 +48,9 @@ const ProductCard = () => {
       <Row gutter={16} justify="center">
         {products.map((product, index) => (
           <Col span={4} key={index} className="mx-6 py-4">
-            {" "}
-            {/* 5 products per row */}
             <Card
               hoverable
-              cover={<img alt={product.title} src={product.imageSrc} />}
+              cover={<img alt={product.title} src={product.imageSrc} className="w-full object-cover"/>}
             >
               <Card.Meta title={product.title} />
               <Card.Meta title={product.description}></Card.Meta>
@@ -62,7 +59,6 @@ const ProductCard = () => {
                   {product.price}
                 </p>
                 <Button
-                  
                   icon={<ShoppingCartOutlined />}
                   size="small"
                   className="ml-2"

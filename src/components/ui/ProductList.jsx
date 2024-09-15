@@ -33,7 +33,7 @@ const ProductList = () => {
         <Col span={6} key={index}>  {/* 4 products per row */}
           <Card
             hoverable
-            cover={<img alt={product.title} src={product.imageSrc} />}
+            cover={<img alt={product.title} src={product.imageSrc}  className="w-full h-48 object-cover"/>}
           >
             <Card.Meta title={product.title} />
             
