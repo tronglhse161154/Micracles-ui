@@ -42,7 +42,7 @@ const ProductCard = () => {
   const { Title } = Typography;
   return (
     <>
-      <Title level={2} className="text-[#FFE8AC] text-center my-6 ">
+      <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6 ">
         Sản phẩm yêu thích
       </Title>
       <Row gutter={16} justify="center">
