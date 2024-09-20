@@ -26,7 +26,7 @@ function RelactedCard() {
           <Col xs={12} md={6} key={relatedProduct.id}>
             <Card
               hoverable
-              cover={<img alt={relatedProduct.title} src={relatedProduct.imageSrc} className='h-65 object-cover' />}
+              cover={<img alt={relatedProduct.title} src={relatedProduct.imageSrc} className='h-61 object-cover' />}
             >
               <Card.Meta title={relatedProduct.title} />
               <p>{relatedProduct.price} đ</p>
