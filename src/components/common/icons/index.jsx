@@ -4,6 +4,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa";
 import { MdLogin } from "react-icons/md";
 import { FaRegistered } from "react-icons/fa";
+import { TbTruckDelivery } from "react-icons/tb";
+import { HiShieldCheck } from "react-icons/hi2";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { RiExchangeBoxFill } from "react-icons/ri";
 
 export function SearchIcon() {
   return <IoSearchOutline size={25} />;
@@ -27,6 +31,22 @@ export function LoginIcon() {
 
 export function SignupIcon() {
   return <FaRegistered size={25} />;
+}
+
+export function DeliveryIcon() {
+  return <TbTruckDelivery size={40} />;
+}
+
+export function ShieldIcon() {
+  return <HiShieldCheck size={40} />;
+}
+
+export function OperatorIcon() {
+  return <MdOutlineSupportAgent size={40} />;
+}
+
+export function ExchangeIcon() {
+  return <RiExchangeBoxFill size={40} />;
 }
 
 export function LeftVidIcon() {
