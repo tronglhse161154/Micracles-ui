@@ -6,6 +6,8 @@ import Footer from "./components/layout/footer/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ViewCard from "./pages/ViewCard";
+import DetailPage  from "./pages/DetailPage";
+
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/viewcard" element={<ViewCard />} />
+          <Route path="/card-detail/:id" element={<DetailPage />} />
+          
         </Routes>
       
         <Footer />

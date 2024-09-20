@@ -1,42 +1,8 @@
 import { Card, Row, Col, Button } from "antd";
 import { Typography } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-const products = [
-  {
-    title: "BANDAI NAMCO",
-    imageSrc:
-      "https://cardotaku.com/cdn/shop/products/OP01-070.png?v=1658123058&width=2048",
-    price: "3,000,000",
-    description: "Digimon BT8-112 - Imperialdramon Paladin Mode",
-  },
-  {
-    title: "BANDAI NAMCO",
-    imageSrc:
-      "https://cardotaku.com/cdn/shop/products/OP01-070.png?v=1658123058&width=2048",
-    price: "3,000,000",
-    description: "Digimon BT-2-032 - UlforceVeedramon",
-  },
-  {
-    title: "BANDAI NAMCO",
-    imageSrc: "https://static.dotgg.gg/onepiece/card/ST01-001.webp",
-    price: "3,000,000",
-    description: "Shadowverse Evolve BP03-U07EN",
-  },
-  {
-    title: "BUSHIROAD",
-    imageSrc:
-      "https://cardotaku.com/cdn/shop/products/OP01-070.png?v=1658123058&width=2048",
-    price: "3,000,000",
-    description: "Shadowverse Evolve BP01-U06EN",
-  },
-  {
-    title: "BUSHIROAD",
-    imageSrc:
-      "https://cardotaku.com/cdn/shop/products/OP01-070.png?v=1658123058&width=2048",
-    price: "3,000,000",
-    description: "Shadowverse Evolve BP01-U06EN",
-  },
-];
+import { Link } from "react-router-dom";
+import products from "../../../product";
 
 const ProductCard = () => {
   const { Title } = Typography;
@@ -50,7 +16,10 @@ const ProductCard = () => {
           <Col span={4} key={index} className="mx-6 py-4">
             <Card
               hoverable
-              cover={<img alt={product.title} src={product.imageSrc} className="w-full object-cover"/>}
+              cover={
+              <Link to={`/card-detail/${product.id}`}>
+              <img alt={product.title} src={product.imageSrc} className="w-full object-cover"/>
+              </Link>}
             >
               <Card.Meta title={product.title} />
               <Card.Meta title={product.description}></Card.Meta>
@@ -69,6 +38,7 @@ const ProductCard = () => {
         ))}
       </Row>
       <div className="flex justify-center py-6 ">
+        <Link >
         <Button
           type="primary"
           size="large"
@@ -76,6 +46,7 @@ const ProductCard = () => {
         >
           Xem thêm sản phẩm
         </Button>
+        </Link>
       </div>
     </>
   );
