@@ -4,6 +4,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa";
 import { MdLogin } from "react-icons/md";
 import { FaRegistered } from "react-icons/fa";
+import { TbTruckDelivery } from "react-icons/tb";
+import { HiShieldCheck } from "react-icons/hi2";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { RiExchangeBoxFill } from "react-icons/ri";
 
 export function SearchIcon() {
   return <IoSearchOutline size={25} />;
@@ -26,5 +30,115 @@ export function LoginIcon() {
 }
 
 export function SignupIcon() {
-  return <FaRegistered size={25} />
+  return <FaRegistered size={25} />;
+}
+
+export function DeliveryIcon() {
+  return <TbTruckDelivery size={40} />;
+}
+
+export function ShieldIcon() {
+  return <HiShieldCheck size={40} />;
+}
+
+export function OperatorIcon() {
+  return <MdOutlineSupportAgent size={40} />;
+}
+
+export function ExchangeIcon() {
+  return <RiExchangeBoxFill size={40} />;
+}
+
+export function LeftVidIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="248"
+      height="136"
+      fill="none"
+    >
+      <path
+        fill="url(#medium-gold_svg__a)"
+        d="M176.686 0H248v3h-71.314z"
+      ></path>
+      <path
+        fill="url(#medium-gold_svg__b)"
+        fillRule="evenodd"
+        d="m31.879 15.5 17-15.5h127.807v3H50.121l-17 15.5H18v15.121l-15 17V136H0V49.379l15-17V28H0V0h28v15.5zM15 15.5V25H3V3h22v12.5zm37.5-9h-.198l-.144.136L35.802 22H21.5v13.816L7.12 52.676l-.12.14V136h1V53.184l14.38-16.86.12-.14V23h13.698l.144-.136L52.698 7.5H80v-1z"
+        clipRule="evenodd"
+      ></path>
+      <defs>
+        <linearGradient
+          id="medium-gold_svg__a"
+          x1="176.707"
+          x2="248.033"
+          y1="2.011"
+          y2="2.002"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFD789"></stop>
+          <stop offset="1" stop-color="#FFD789" stopOpacity="0"></stop>
+        </linearGradient>
+        <linearGradient
+          id="medium-gold_svg__b"
+          x1="88.343"
+          x2="88.343"
+          y1="0"
+          y2="136"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFD789"></stop>
+          <stop offset="0.5" stopColor="#AD7C3F"></stop>
+          <stop offset="1" stopColor="#A97948" stopOpacity="0"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+export function RightVidIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="248"
+      height="136"
+      fill="none"
+    >
+      <path
+        fill="url(#medium-gold_svg__a)"
+        d="M176.686 0H248v3h-71.314z"
+      ></path>
+      <path
+        fill="url(#medium-gold_svg__b)"
+        fillRule="evenodd"
+        d="m31.879 15.5 17-15.5h127.807v3H50.121l-17 15.5H18v15.121l-15 17V136H0V49.379l15-17V28H0V0h28v15.5zM15 15.5V25H3V3h22v12.5zm37.5-9h-.198l-.144.136L35.802 22H21.5v13.816L7.12 52.676l-.12.14V136h1V53.184l14.38-16.86.12-.14V23h13.698l.144-.136L52.698 7.5H80v-1z"
+        clipRule="evenodd"
+      ></path>
+      <defs>
+        <linearGradient
+          id="medium-gold_svg__a"
+          x1="176.707"
+          x2="248.033"
+          y1="2.011"
+          y2="2.002"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFD789"></stop>
+          <stop offset="1" stopColor="#FFD789" stopOpacity="0"></stop>
+        </linearGradient>
+        <linearGradient
+          id="medium-gold_svg__b"
+          x1="88.343"
+          x2="88.343"
+          y1="0"
+          y2="136"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFD789"></stop>
+          <stop offset="0.5" stopColor="#AD7C3F"></stop>
+          <stop offset="1" stopColor="#A97948" stopOpacity="0"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  );
 }
