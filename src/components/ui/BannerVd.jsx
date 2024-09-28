@@ -37,11 +37,25 @@ const BannerVd = () => {
               <h4 class="font-semibold text-3xl text-white text-center text-shadow-lg shadow-black">
                 Welcome to Miracle Trading Card Game
               </h4>
-              <div className="h-[100px] md:h-[180px]"><Logo w="200" h="200"/></div>
+              <div className="h-[100px] md:h-[180px]">
+                <Logo w="200" h="200" />
+              </div>
             </div>
             <div className="flex flex-col w-full items-center md:flex-row gap-2 md:gap-3 md:px-12">
-              <Button label="Shop now" />
-              <Button label="Sell with us" />
+              <Button
+                label="Shop now"
+                containerStyles="hover:no-underline hover:rounded-tl-2xl hover:rounded-br-2xl hover:bg-primary transition-all duration-100 ease-out clickable flex items-center whitespace-nowrap justify-center font-semibold p-2 sm-bold-caps gap-x-2 border border-primary
+    hover:text-black hover:border-primary
+    active:border-primary active:text-black
+    w-full text-white cursor-pointer"
+              />
+              <Button
+                label="Sell with us"
+                containerStyles="hover:no-underline hover:rounded-tl-2xl hover:rounded-br-2xl hover:bg-primary transition-all duration-100 ease-out clickable flex items-center whitespace-nowrap justify-center font-semibold p-2 sm-bold-caps gap-x-2 border border-primary
+    hover:text-black hover:border-primary
+    active:border-primary active:text-black
+    w-full text-white cursor-pointer"
+              />
             </div>
           </div>
         </div>

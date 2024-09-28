@@ -7,7 +7,7 @@ const Register = () =>{
     <>
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-semibold text-center mb-6">Đăng Ký</h1>
+        <h1 className="text-2xl font-semibold text-center mb-6">Sign up</h1>
         <Form
           name="login"
           className="login-form"
@@ -61,9 +61,9 @@ const Register = () =>{
           </Form.Item>
 
           <div className="text-center mt-4">
-            đã có tài khoản?
+            Already have account ?
             <Link to={'/login'} className='ml-2 text-blue-500 hover:underline'>
-            Đăng nhập
+            Login
             </Link>
           </div>
         </Form>
