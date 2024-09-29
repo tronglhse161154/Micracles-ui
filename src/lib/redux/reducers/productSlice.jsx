@@ -3,16 +3,17 @@ import {jwtDecode }from "jwt-decode";
 import { setCurrentUser } from "../redux/reducers/userSlice";
 
 
-export const registerUser = async (email, password, fullName, phoneNumber, province, district, address) => {
+export const registerUser = async ( userName, fullName, email, password, phoneNumber, province, district, address) => {
     try {
       const response = await axiosClient.post("/api/v1/users/register", {
+        userName,
+        fullName,
         email,
         password,
-        fullName,
         phoneNumber,
         province,
         district,
-        address
+        address,
       });
       return response.data;
     } catch (error) {

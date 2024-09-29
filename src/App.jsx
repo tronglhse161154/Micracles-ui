@@ -1,4 +1,4 @@
-import Container from "./components/ui/Container";
+
 import Navbar from "./components/layout/navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage";
@@ -10,6 +10,7 @@ import DetailPage from "./pages/DetailPage";
 import CreatePage from "./pages/CreateProduct";
 import CategoryPage from "./pages/CategoryPage";
 import SearchModal from "./components/ui/modals/SearchModal";
+import ToasterProvider from "./providers/ToastProvider";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Router>
         <Navbar />
         <SearchModal />
+        <ToasterProvider/>
 
         <Routes>
           <Route path="/" element={<Home />} />

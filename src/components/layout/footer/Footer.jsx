@@ -11,7 +11,7 @@ import Container from "../../ui/Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-body border-t-[1px] mt-96">
+    <footer className="bg-body border-t-[1px] mt-50">
       <div className="top-footer bg-primary p-10">
         <Container>
           <div className="relative flex flex-row justify-center gap-20">
