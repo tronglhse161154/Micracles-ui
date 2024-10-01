@@ -24,4 +24,7 @@ html, body {
   overflow-x: hidden;
 }
 
+.sider {
+  background-color: #fff !important; /* Thay thế màu sắc theo ý muốn */
+}
 
