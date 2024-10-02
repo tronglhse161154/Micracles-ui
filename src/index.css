@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+}
+
+
 :root {
   font-family: "__Work_Sans_1fc36d", "__Work_Sans_Fallback_1fc36d";
   line-height: 1.5;
@@ -9,7 +22,6 @@
   margin: 0;
   padding: 0;
 
-  color-scheme: light dark;
   color: black;
   background-color: white;
 
@@ -27,4 +39,6 @@ html, body {
 .sider {
   background-color: #fff !important; /* Thay thế màu sắc theo ý muốn */
 }
+
+
 

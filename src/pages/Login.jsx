@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100 overflow-hidden">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md min-h-[400px]">
-        <h1 className="text-2xl font-semibold text-center mb-6">Đăng nhập </h1>
+        <h1 className="text-2xl font-semibold text-center mb-6">Login </h1>
         <Form
           name="login"
           className="login-form"
@@ -45,14 +45,14 @@ const Login = () => {
               type="submit"
               className="w-full bg-[#FFE8AC] hover:bg-white text-black rounded-md"
             >
-              Đăng nhập
+              Login
             </Button>
           </Form.Item>
 
           <div className="text-center mt-4">
-            Chưa có tài khoản?
+            Are you new ?
             <Link to="/register" className="ml-2 text-blue-500 hover:underline">
-              Đăng ký
+              Signup
             </Link>
           </div>
         </Form>

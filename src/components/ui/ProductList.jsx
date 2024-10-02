@@ -1,5 +1,8 @@
 import { Card, Row, Col } from "antd";
 import { Typography } from 'antd';
+import { Link } from 'react-router-dom';
+
+
 const products = [
   {
     title: "Digimon Card Game",
@@ -27,17 +30,18 @@ const ProductList = () => {
     const {Title} = Typography;
   return (
     <>
-    <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6">Danh mục sản phẩm</Title>
+    <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6">Categories</Title>
     <Row gutter={16}>
       {products.map((product, index) => (
         <Col span={6} key={index}>  {/* 4 products per row */}
-          <Card
-            hoverable
-            cover={<img alt={product.title} src={product.imageSrc}  className="w-full h-48 object-cover"/>}
-          >
-            <Card.Meta title={product.title} />
-            
-          </Card>
+        <Link to={`/category/${product.title}`}> {/* Add Link to route */}
+              <Card
+                hoverable
+                cover={<img alt={product.title} src={product.imageSrc} className="w-full h-48 object-cover" />}
+              >
+                <Card.Meta title={product.title} />
+              </Card>
+            </Link>
         </Col>
       ))}
     </Row>
