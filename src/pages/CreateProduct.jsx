@@ -85,7 +85,7 @@ const CreatePage = () => {
       <Container>
         <div className="my-7">
           <Link to="/">
-            <button className="font-semibold text-white bg-gray-500 hover:bg-gray-600 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg py-2 px-4 rounded-full inline-flex items-center">
+            <button className="font-semibold text-white bg-gray-500 hover:bg-gray-600 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg py-2 px-4 rounded-full inline-flex items-center ml-5">
               <LeftArrowIcon />
               Back
             </button>
@@ -101,9 +101,31 @@ const CreatePage = () => {
               <CustomInput
                 id="productname"
                 label="Product name"
+                type="string"
                 register={register}
                 errors={errors}
                 required="Product name is required"
+              />
+
+              <CustomInput
+                id="quantity"
+                label="Quantity"
+                type="number"
+                register={register}
+                errors={errors}
+                required="Quantity is required"
+              />
+
+              <CustomInput
+                id="price"
+                label="Price"
+                type="number"
+                register={register}
+                errors={errors}
+                formatPrice
+                validate
+                control={control}
+                required="Price is required"
               />
             </div>
             <span className="font-mono text-sm">

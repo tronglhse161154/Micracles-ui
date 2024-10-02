@@ -4,10 +4,12 @@ import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
 import useSearchModal from "../../hooks/useSearchModal"
+import { useSelector } from "react-redux";
 
 function Navbar() {
 
   const searchModal = useSearchModal();
+  const currentUser = useSelector((state) => state.users.currentUser);
 
   return (
     <div className="fixed z-50 left-2 right-2 bottom-2 lg:bottom-auto lg:top-4 lg:left-4 lg:right-4 max-w-[1400px] mx-auto lg:flex lg:gap-4 lg:items-center">
@@ -63,7 +65,7 @@ function Navbar() {
                 <CartIcon />
                 </Link>
               </div>
-              <UserMenu />
+              <UserMenu currentUser={currentUser}/>
             </div>
           </div>
         </Container>
