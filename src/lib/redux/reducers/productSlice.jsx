@@ -1,52 +1,34 @@
-import { axiosClient } from "./config/axios-client";
-import {jwtDecode }from "jwt-decode";
-import { setCurrentUser } from "../redux/reducers/userSlice";
 
 
-export const registerUser = async ( userName, fullName, email, password, phoneNumber, province, district, address) => {
-    try {
-      const response = await axiosClient.post("/api/v1/users/register", {
-        userName,
-        fullName,
-        email,
-        password,
-        phoneNumber,
-        province,
-        district,
-        address,
-      });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+import { createSlice } from "@reduxjs/toolkit"
 
-  export const loginUser = (email, password) => async (dispatch) => {
-    try {
-        const response = await axiosClient.post("api/v1/users/login", {
-            email: email,
-            password: password,
-        });
-        console.log("Full Response:", response);
-        const responseData = response.data;
-        console.log("Response Data:", responseData); // Log chi tiết phản hồi từ server
 
-        if(responseData.token) {
-           // const user = responseData.data.loginResModel;
-            const token = responseData.token;
-            const user = jwtDecode(token);
-            sessionStorage.setItem("token", token);
-            sessionStorage.setItem("user", JSON.stringify(user));
+const productSlice = createSlice({
+    name : 'products',
+    initialState: {
+        productsList: [],
+        updateProduct: {},
+        detailProduct: {},
+    },
+    reducers: {
+        setProductsList: (state, action) => {
+            state.productsList = action.payload;
+        },
 
-            console.log("Dispatching setCurrentUser action");
+        setUpdateProduct: (state, action) => {
+            state.updateProduct = action.payload;
+        },
 
-            dispatch(setCurrentUser(user)); // Lưu thông tin người dùng vào Redux store
-
-            return {token, user};
-        } else {
-            throw new Error(responseData.message || "Login failed !");
+        setDetailProduct: (state, action) => {
+            state.detailProduct = action.payload;
         }
-    } catch (error){
-        throw error;
     }
-}
+});
+
+export const{
+    setProductsList,
+    setUpdateProduct,
+    setDetailProduct,
+} = productSlice.actions;
+
+export default productSlice.reducer;

@@ -1,4 +1,3 @@
-
 import Navbar from "./components/layout/navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage";
@@ -11,31 +10,37 @@ import CreatePage from "./pages/CreateProduct";
 import CategoryPage from "./pages/CategoryPage";
 import SearchModal from "./components/ui/modals/SearchModal";
 import ToasterProvider from "./providers/ToastProvider";
+import OTPConfirmModal from "./components/ui/modals/OTPconfirmModal";
+import { Provider } from "react-redux";
+import store from "./lib/redux/store"
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <SearchModal />
-        <ToasterProvider/>
+      <Provider store={store}>
+        <Router>
+          <Navbar />
+          <SearchModal />
+          <OTPConfirmModal />
+          <ToasterProvider />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pokemon" element={""} />
-          <Route path="/elite-exclusive" element={""} />
-          <Route path="/digimon" element={""} />
-          <Route path="/one-piece" element={""} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/viewcard" element={<ViewCard />} />
-          <Route path="/card-detail/:id" element={<DetailPage />} />
-          <Route path="/create-product" element={<CreatePage />} />
-          <Route path="/category/:categoryName" element={<CategoryPage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pokemon" element={""} />
+            <Route path="/elite-exclusive" element={""} />
+            <Route path="/digimon" element={""} />
+            <Route path="/one-piece" element={""} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/viewcard" element={<ViewCard />} />
+            <Route path="/card-detail/:id" element={<DetailPage />} />
+            <Route path="/create-product" element={<CreatePage />} />
+            <Route path="/category/:categoryName" element={<CategoryPage />} />
+          </Routes>
 
-        <Footer />
-      </Router>
+          <Footer />
+        </Router>
+      </Provider>
     </>
   );
 }

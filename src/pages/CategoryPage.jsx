@@ -31,7 +31,7 @@ const CategoryPage = () => {
   }, []);
 
   return (
-    <div className="mt-28">
+    <div className="">
       <DynamicBanner img1={selectedImages.img1} img2={selectedImages.img2} />
     </div>
   );

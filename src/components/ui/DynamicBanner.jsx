@@ -13,7 +13,7 @@ const DynamicBanner = ({ img1, img2 }) => {
     console.log(currentSlide);
   };
   return (
-    <div className="my-10 relative">
+    <div className="relative">
       <Carousel afterChange={onChange} autoplay="true" autoplaySpeed={2000} draggable="true">
         <div>
           <h3 style={contentStyle}>

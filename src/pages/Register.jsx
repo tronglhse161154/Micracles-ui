@@ -12,9 +12,11 @@ import {
 import { Link } from "react-router-dom";
 import { registerUser } from "../lib/api/Authen";
 import toast from "react-hot-toast";
+import useOTPconfirmModal from "../components/hooks/useOTPconfirmModal";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const OTPconfirmModal = useOTPconfirmModal();
   
   const {
     handleSubmit,
@@ -25,10 +27,7 @@ const Register = () => {
       email: "",
       password: "",
       fullName: "",
-      phoneNumber: "",
-      province: "",
-      district: "",
-      address: "",
+      userName: ""
     },
   });
 
@@ -36,17 +35,17 @@ const Register = () => {
     async (data) => {
       try {
         setIsLoading(true);
+        const email = data.email;
         await registerUser(
-          data.email,
+          email,
+          data.userName,
           data.password,
           data.fullName,
-          data.phoneNumber,
-          data.province,
-          data.district,
-          data.address
+          
         );
         setIsLoading(false);
-        toast.success("User registered successfully!");
+        OTPconfirmModal.onOpen(email);
+        toast.success("Check your email to finish register!");
       } catch (error) {
         if (error.response && error.response.status === 400) {
           toast.error("Email already exists!");
@@ -86,6 +85,7 @@ const Register = () => {
             />
             {errors.fullName && <span className="text-red-500">{errors.fullName.message}</span>}
           </Form.Item>
+          
 
           <Form.Item>
             <Controller
@@ -107,6 +107,23 @@ const Register = () => {
 
           <Form.Item>
             <Controller
+              name="userName"
+              control={control}
+              rules={{ required: "Please input your userName" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="User name"
+                  className="rounded-md"
+                />
+              )}
+            />
+            {errors.fullName && <span className="text-red-500">{errors.fullName.message}</span>}
+          </Form.Item>
+
+          <Form.Item>
+            <Controller
               name="password"
               control={control}
               rules={{ required: "Please input your Password!" }}
@@ -120,75 +137,6 @@ const Register = () => {
               )}
             />
             {errors.password && <span className="text-red-500">{errors.password.message}</span>}
-          </Form.Item>
-
-          <Form.Item>
-            <Controller
-              name="phoneNumber"
-              control={control}
-              rules={{ required: "Please input your phone number!" }}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  prefix={<PhoneOutlined className="site-form-item-icon" rotate={100} />}
-                  placeholder="Phone number"
-                  type="tel"
-                  className="rounded-md"
-                />
-              )}
-            />
-            {errors.phoneNumber && <span className="text-red-500">{errors.phoneNumber.message}</span>}
-          </Form.Item>
-
-          <Form.Item>
-            <Controller
-              name="province"
-              control={control}
-              rules={{ required: "Tell us where you're from!" }}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  prefix={<HeatMapOutlined className="site-form-item-icon" />}
-                  placeholder="Province"
-                  className="rounded-md"
-                />
-              )}
-            />
-            {errors.province && <span className="text-red-500">{errors.province.message}</span>}
-          </Form.Item>
-
-          <Form.Item>
-            <Controller
-              name="district"
-              control={control}
-              rules={{ required: "Tell us where you're from!" }}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  prefix={<HeatMapOutlined className="site-form-item-icon" />}
-                  placeholder="District"
-                  className="rounded-md"
-                />
-              )}
-            />
-            {errors.district && <span className="text-red-500">{errors.district.message}</span>}
-          </Form.Item>
-
-          <Form.Item>
-            <Controller
-              name="address"
-              control={control}
-              rules={{ required: "Tell us where you're from!" }}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  prefix={<HomeOutlined className="site-form-item-icon" />}
-                  placeholder="Address"
-                  className="rounded-md"
-                />
-              )}
-            />
-            {errors.address && <span className="text-red-500">{errors.address.message}</span>}
           </Form.Item>
 
           <Form.Item>

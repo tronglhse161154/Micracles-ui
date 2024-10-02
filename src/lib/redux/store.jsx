@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'; 
 import usersSlice,{setCurrentUser} from './reducers/userSlice';
+import productSlice from './reducers/productSlice';
 
 const store = configureStore({
   reducer: {
     users: usersSlice,
+    products: productSlice,
 
   },
   middleware: (getDefaultMiddleware) =>

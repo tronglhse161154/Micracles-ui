@@ -14,6 +14,7 @@ const CustomInput = ({
   errors,
   placeholder,
   validate,
+  type
 }) => {
   return (
     <div className="my-4">
@@ -58,6 +59,7 @@ const CustomInput = ({
           <input
             id={id}
             disabled={disabled}
+            type={type}
             {...register(id, { required, validate })}
             placeholder={placeholder}
             className={`w-full p-2 border border-gray-300 rounded 
