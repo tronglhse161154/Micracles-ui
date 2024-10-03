@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Upload from "../components/ui/Upload";
 import CustomInput from "../components/ui/CustomInput";
 import Button from "../components/ui/Button";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const currentUser = (state) => state.users.currentUser;
 const selectUserId = (state) => state.users.currentUser?.ID;
@@ -154,4 +155,4 @@ const CreatePage = () => {
   );
 };
 
-export default CreatePage;
+export default ProtectedRoute(CreatePage, ["Member"]);

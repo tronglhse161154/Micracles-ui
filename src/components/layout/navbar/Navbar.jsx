@@ -12,8 +12,8 @@ function Navbar() {
   const currentUser = useSelector((state) => state.users.currentUser);
 
   return (
-    <div className="fixed z-50 left-2 right-2 bottom-2 lg:bottom-auto lg:top-4 lg:left-4 lg:right-4 max-w-[1400px] mx-auto lg:flex lg:gap-4 lg:items-center">
-      <div className="bg-yellow-50 backdrop-blur-md lg:grow flex items-center pl-3 pr-1 py-1 lg:pl-4 rounded-3xl gap-2 lg:gap-4 h-[85px] opacity-75 shadow-custom-overflow ">
+    <div className="fixed z-30 left-2 right-2 bottom-2 lg:bottom-auto lg:top-4 lg:left-4 lg:right-4 max-w-[1400px] mx-auto lg:flex lg:gap-4 lg:items-center">
+      <div className="bg-yellow-50 backdrop-blur-md lg:grow flex items-center pl-3 pr-1 py-1 lg:pl-4 rounded-3xl gap-2 lg:gap-4 h-[85px] opacity-90 shadow-custom-overflow ">
         <Container>
           <div className="flex flex-row items-center justify-center hover:text-neutral-800 ">
             <div className="relative flex gap-5 items-center mr-[120px]">

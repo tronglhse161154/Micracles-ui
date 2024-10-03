@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Form, Input, Button } from "antd";
 import {
@@ -17,6 +17,10 @@ import useOTPconfirmModal from "../components/hooks/useOTPconfirmModal";
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const OTPconfirmModal = useOTPconfirmModal();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   const {
     handleSubmit,
