@@ -13,6 +13,7 @@ import { FaHistory } from "react-icons/fa";
 import { IoMdNotifications, IoIosSettings } from "react-icons/io";
 import { HiOutlineLogin } from "react-icons/hi";
 import { MdDashboard, MdManageAccounts } from "react-icons/md";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const UserMenu = ({ currentUser }) => {
@@ -101,11 +102,13 @@ const UserMenu = ({ currentUser }) => {
                 </>
               ) : (
                 <>
+                <Link to={`/profile`}>
                   <MenuItem
                     onClick={() => {}}
                     label="My profile"
                     icon={<CgProfile size={20} />}
                   />
+                  </Link>
                   <MenuItem
                     onClick={() => {}}
                     label="My history"

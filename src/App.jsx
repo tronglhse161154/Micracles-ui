@@ -12,6 +12,7 @@ import CategoryPage from "./pages/CategoryPage";
 import SearchModal from "./components/ui/modals/SearchModal";
 import ToasterProvider from "./providers/ToastProvider";
 import OTPConfirmModal from "./components/ui/modals/OTPconfirmModal";
+import Profile from "./pages/Profile";
 import AdminPage from "./pages/AdminPage";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/card-detail/:id" element={<DetailPage />} />
           <Route path="/create-product" element={<CreatePage />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/admin/*" element={<AdminPage />} />
         </Routes>
       </div>

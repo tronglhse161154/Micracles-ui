@@ -56,7 +56,7 @@ const AdminPage = () => {
       <Layout className="site-layout">
         <Header className="site-layout-background p-0 bg-white flex justify-end items-center">
           <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
-            <div className="flex justify-end text-3xl py-2 px-6">
+            <div className="flex justify-end text-3xl py-2 px-6 cursor-pointer">
             <UserOutlined/>
             </div>
           </Dropdown>
