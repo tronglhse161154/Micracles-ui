@@ -9,7 +9,7 @@ const ProductCard = () => {
   return (
     <>
       <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6 ">
-        Best seller
+        Sản phẩm bán chạy nhất
       </Title>
       <Row gutter={16} justify="center">
         {products.map((product, index) => (
@@ -44,7 +44,7 @@ const ProductCard = () => {
           size="large"
           className="px-6 py-4 text-lg bg-slate-300 text-black rounded hover:bg-slate-100"
         >
-          View More
+          Xem thêm
         </Button>
         </Link>
       </div>

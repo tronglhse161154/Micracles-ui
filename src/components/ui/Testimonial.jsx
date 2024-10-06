@@ -9,7 +9,7 @@ export function Testimonials() {
   return (
     <>
       <Title className="text-[#FFE8AC] text-center my-6">
-        What our customers fellings
+        Cảm nhận của khách hàng về chúng tôi
       </Title>
       <div className="h-[40rem] rounded-md flex flex-col antialiased bg-white items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards
@@ -25,15 +25,15 @@ export function Testimonials() {
 const testimonials = [
   {
     quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
+      "Trang web rất bắt mắt, các sản phâm cũng đa dạng nhiều loại thẻ bài khiến tôi nhớ về tuổi thơ, hi vọng trang web sẽ phát triển hơn và mang lại nhiều loại sản phẩm hiếm có",
+    name: "Nguyen Van Charles",
+    title: "Tuyệt vời !!",
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
+      "Các loại thẻ rất đẹp và chất lượng cao, giao diện bắt mắt thân thiện, tôi vừa thực hiện giao dịch rất nhanh chóng và đem về những thẻ bài độc đáo cho bộ sưu tập của mình.",
+    name: "Nghia",
+    title: "Amazing good job!",
   },
   {
     quote: "All that we see or seem is but a dream within a dream.",

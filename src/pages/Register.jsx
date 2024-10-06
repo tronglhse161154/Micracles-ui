@@ -49,10 +49,10 @@ const Register = () => {
         );
         setIsLoading(false);
         OTPconfirmModal.onOpen(email);
-        toast.success("Check your email to finish register!");
+        toast.success("Vui lòng xác nhận tài khoản được gửi tới mail của bạn!");
       } catch (error) {
         if (error.response && error.response.status === 400) {
-          toast.error("Email already exists!");
+          toast.error("Email đã tồn tại!");
         } else {
           toast.error("Something went wrong");
         }
@@ -66,7 +66,7 @@ const Register = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-semibold text-center mb-6">Sign up</h1>
+        <h1 className="text-2xl font-semibold text-center mb-6">Đăng ký</h1>
         <Form
           name="register"
           className="register-form"
@@ -149,14 +149,14 @@ const Register = () => {
               loading={isLoading}
               className="w-full bg-[#FFE8AC] hover:bg-white text-black rounded-md"
             >
-              Continue
+              Tiếp tục
             </Button>
           </Form.Item>
 
           <div className="text-center mt-4">
-            Already have an account?
+            Đã có tài khoản?
             <Link to={"/login"} className="ml-2 text-blue-500 hover:underline">
-              Login
+              Đăng nhập
             </Link>
           </div>
         </Form>

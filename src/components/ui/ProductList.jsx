@@ -30,7 +30,7 @@ const ProductList = () => {
     const {Title} = Typography;
   return (
     <>
-    <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6">Categories</Title>
+    <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6">Danh mục sản phẩm</Title>
     <Row gutter={16}>
       {products.map((product, index) => (
         <Col span={6} key={index}>  {/* 4 products per row */}

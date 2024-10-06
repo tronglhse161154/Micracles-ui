@@ -35,7 +35,7 @@ const UserMenu = ({ currentUser }) => {
     // Clear user from Redux store
     dispatch(clearCurrentUser());
     setIsOpen(false);
-    toast.success("Logout Successful !");
+    toast.success("Đăng xuất thành công !");
     navigate("/");
   }, [dispatch, navigate]);
 
@@ -63,17 +63,17 @@ const UserMenu = ({ currentUser }) => {
                 <>
                   <MenuItem
                     onClick={() => {}}
-                    label="Dashboard"
+                    label="Thống kê"
                     icon={<MdDashboard size={20} />}
                   />
                   <MenuItem
                     onClick={() => {}}
-                    label="Notifications"
+                    label="Thông báo"
                     icon={<IoMdNotifications size={20} />}
                   />
                   <MenuItem
                     onClick={handleLogout}
-                    label="Log out"
+                    label="Đăng xuất"
                     icon={<HiOutlineLogin size={20} />}
                   />
                 </>
@@ -105,28 +105,28 @@ const UserMenu = ({ currentUser }) => {
                 <Link to={`/profile`}>
                   <MenuItem
                     onClick={() => {}}
-                    label="My profile"
+                    label="Thông tin của tôi"
                     icon={<CgProfile size={20} />}
                   />
                   </Link>
                   <MenuItem
                     onClick={() => {}}
-                    label="My history"
+                    label="Lịch sử"
                     icon={<FaHistory size={20} />}
                   />
                   <MenuItem
                     onClick={() => {}}
-                    label="Notifications"
+                    label="Thông báo"
                     icon={<IoMdNotifications size={20} />}
                   />
                   <MenuItem
                     onClick={() => {}}
-                    label="Settings"
+                    label="Cài đặt"
                     icon={<IoIosSettings size={20} />}
                   />
                   <MenuItem
                     onClick={handleLogout}
-                    label="Log out"
+                    label="Đăng xuất"
                     icon={<HiOutlineLogin size={20} />}
                   />
                 </>
@@ -135,12 +135,12 @@ const UserMenu = ({ currentUser }) => {
               <>
                 <MenuItem
                   onClick={() => navigate("/login")}
-                  label="Login"
+                  label="Đăng nhập"
                   icon={<LoginIcon size={20} />}
                 />
                 <MenuItem
                   onClick={() => navigate("register")}
-                  label="Signup"
+                  label="Đăng ký"
                   icon={<SignupIcon size={20} />}
                 />
               </>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Layout, Menu, Dropdown, Button } from "antd";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Logo from "../components/layout/navbar/Logo";
@@ -6,22 +7,32 @@ import Dashboard from "../components/ui/Dashboard";
 import Users from "../components/ui/User";
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import CreateProduct from "./CreateProduct";
+import { useDispatch } from "react-redux";
+import {
+  clearCurrentUser,
+} from "../lib/redux/reducers/userSlice";
+import ProtectedRoute from "../components/ProtectedRoute";
+import toast from "react-hot-toast";
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const AdminPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    // Clear any session data or token here
-    localStorage.removeItem("userToken"); // Example: remove token from localStorage
-    navigate("/login"); // Redirect to login page
-  };
+  const handleLogout = useCallback(() => {
+    // Clear user from Redux store
+    dispatch(clearCurrentUser());
+    setIsOpen(false);
+    toast.success("Đăng xuất thành công !");
+    navigate("/");
+  }, [dispatch, navigate]);
 
   const menu = (
     <Menu>
       <Menu.Item key="logout" onClick={handleLogout} icon={<LogoutOutlined />}>
-        Logout
+        Đăng xuất
       </Menu.Item>
     </Menu>
   );
@@ -74,4 +85,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default ProtectedRoute(AdminPage, ["Member"]);

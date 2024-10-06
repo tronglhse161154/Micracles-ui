@@ -40,12 +40,12 @@ const Login = () => {
         // Store token in localStorage (or sessionStorage as in loginUser function)
         if (result.user) {
           dispatch(setCurrentUser(result.user));
-          toast.success("Login successful!");
+          toast.success("Đăng nhập thành công!");
           navigate("/");
         }
       } catch (error) {
         setIsLoading(false);
-        toast.error("Invalid email or password!");
+        toast.error("Email hoặc mật khẩu không đúng!");
         console.error("Login error:", error);
       }
     },
@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100 overflow-hidden">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md min-h-[400px]">
-        <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
+        <h1 className="text-2xl font-semibold text-center mb-6">Đăng nhập</h1>
         <Form
           className="login-form"
           initialValues={{ remember: true }}
@@ -129,9 +129,9 @@ const Login = () => {
           </Form.Item>
 
           <div className="text-center mt-4">
-            Are you new?
+            Bạn là người mới ?
             <Link to="/register" className="ml-2 text-blue-500 hover:underline">
-              Signup
+              Đăng ký
             </Link>
           </div>
         </Form>
