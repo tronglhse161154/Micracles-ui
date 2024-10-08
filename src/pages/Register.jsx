@@ -1,76 +1,168 @@
-import React from 'react'
-import { Form, Input, Button, Checkbox } from "antd";
-import { MailOutlined, LockOutlined,UserOutlined } from "@ant-design/icons";
-import { Link } from 'react-router-dom';
-const Register = () =>{
+import React, { useCallback, useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { Form, Input, Button } from "antd";
+import {
+  MailOutlined,
+  LockOutlined,
+  UserOutlined,
+  PhoneOutlined,
+  HeatMapOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { registerUser } from "../lib/api/Authen";
+import toast from "react-hot-toast";
+import useOTPconfirmModal from "../components/hooks/useOTPconfirmModal";
+
+const Register = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const OTPconfirmModal = useOTPconfirmModal();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      fullName: "",
+      userName: ""
+    },
+  });
+
+  const onSubmit = useCallback(
+    async (data) => {
+      try {
+        setIsLoading(true);
+        const email = data.email;
+        await registerUser(
+          email,
+          data.userName,
+          data.password,
+          data.fullName,
+          
+        );
+        setIsLoading(false);
+        OTPconfirmModal.onOpen(email);
+        toast.success("Vui lòng xác nhận tài khoản được gửi tới mail của bạn!");
+      } catch (error) {
+        if (error.response && error.response.status === 400) {
+          toast.error("Email đã tồn tại!");
+        } else {
+          toast.error("Something went wrong");
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    []
+  );
+
   return (
-    <>
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-semibold text-center mb-6">Đăng Ký</h1>
+        <h1 className="text-2xl font-semibold text-center mb-6">Đăng ký</h1>
         <Form
-          name="login"
-          className="login-form"
+          name="register"
+          className="register-form"
           initialValues={{ remember: true }}
+          onFinish={handleSubmit(onSubmit)} // Use handleSubmit from React Hook Form
         >
-            <Form.Item
-            name="name"
-            rules={[{ required: true, message: "Please input your Name" }]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Name"
-              type="Name"
-              className="rounded-md"
+          <Form.Item>
+            <Controller
+              name="fullName"
+              control={control}
+              rules={{ required: "Please input your Name" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Name"
+                  className="rounded-md"
+                />
+              )}
             />
+            {errors.fullName && <span className="text-red-500">{errors.fullName.message}</span>}
           </Form.Item>
-          <Form.Item
-            name="email"
-            rules={[{ required: true, message: "Please input your Email!" }]}
-          >
-            <Input
-              prefix={<MailOutlined className="site-form-item-icon" />}
-              placeholder="Email"
-              type="email"
-              className="rounded-md"
+          
+
+          <Form.Item>
+            <Controller
+              name="email"
+              control={control}
+              rules={{ required: "Please input your Email!" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<MailOutlined className="site-form-item-icon" />}
+                  placeholder="Email"
+                  type="email"
+                  className="rounded-md"
+                />
+              )}
             />
+            {errors.email && <span className="text-red-500">{errors.email.message}</span>}
           </Form.Item>
 
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: "Please input your Password!" }]}
-          >
-            <Input.Password
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              placeholder="Password"
-              className="rounded-md"
+          <Form.Item>
+            <Controller
+              name="userName"
+              control={control}
+              rules={{ required: "Please input your userName" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="User name"
+                  className="rounded-md"
+                />
+              )}
             />
+            {errors.fullName && <span className="text-red-500">{errors.fullName.message}</span>}
           </Form.Item>
 
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox className="mb-4">Remember me</Checkbox>
+          <Form.Item>
+            <Controller
+              name="password"
+              control={control}
+              rules={{ required: "Please input your Password!" }}
+              render={({ field }) => (
+                <Input.Password
+                  {...field}
+                  prefix={<LockOutlined className="site-form-item-icon" />}
+                  placeholder="Password"
+                  className="rounded-md"
+                />
+              )}
+            />
+            {errors.password && <span className="text-red-500">{errors.password.message}</span>}
           </Form.Item>
 
           <Form.Item>
             <Button
-              type="submit"
+              htmlType="submit"
+              loading={isLoading}
               className="w-full bg-[#FFE8AC] hover:bg-white text-black rounded-md"
             >
-              Đăng ký
+              Tiếp tục
             </Button>
           </Form.Item>
 
           <div className="text-center mt-4">
-            đã có tài khoản?
-            <Link to={'/login'} className='ml-2 text-blue-500 hover:underline'>
-            Đăng nhập
+            Đã có tài khoản?
+            <Link to={"/login"} className="ml-2 text-blue-500 hover:underline">
+              Đăng nhập
             </Link>
           </div>
         </Form>
       </div>
     </div>
-    </>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

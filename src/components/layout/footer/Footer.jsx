@@ -11,26 +11,26 @@ import Container from "../../ui/Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-body border-t-[1px]">
+    <footer className="bg-body border-t-[1px] mt-56">
       <div className="top-footer bg-primary p-10">
         <Container>
           <div className="relative flex flex-row justify-center gap-20">
             <div className="flex flex-row items-center space-x-3">
               <DeliveryIcon />
-              <span>Fast shipping in Vietnam</span>
+              <span>Giao hàng nhanh tại Việt Nam</span>
             </div>
 
             <div className="flex flex-row items-center space-x-3">
               <ShieldIcon />
-              <span>Genuine Commitment</span>
+              <span>Cam kết chính hãng</span>
             </div>
             <div className="flex flex-row items-center space-x-3">
               <OperatorIcon />
-              <span>Enthusiastic Support</span>
+              <span>Hỗ trợ nhiệt tình</span>
             </div>
             <div className="flex flex-row items-center space-x-3">
               <ExchangeIcon />
-              <span>Easy Return</span>
+              <span>Dễ dàng hoàn trả</span>
             </div>
           </div>
         </Container>
@@ -42,7 +42,7 @@ const Footer = () => {
               <Logo w="120" h="120" />
             </Link>
             <p className="max-w-xs mt-4 text-sm text-black font-semibold">
-              Explore for what you desire.
+              Khám phá thế giới thẻ bài quanh bạn.
             </p>
             <div className="flex mt-8 space-x-6 text-gray-600">
               <a
@@ -85,7 +85,7 @@ const Footer = () => {
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
             <div>
-              <p className="font-semibold text-black">About Us</p>
+              <p className="font-semibold text-black">Về chúng tôi</p>
               <nav aria-label="Footer Navigation - Services" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
@@ -94,7 +94,7 @@ const Footer = () => {
                       to="#"
                     >
                       {" "}
-                      Our Experts
+                      Kinh nghiệm
                     </Link>
                   </li>
                   <li>
@@ -103,7 +103,7 @@ const Footer = () => {
                       to="#"
                     >
                       {" "}
-                      Our Partner
+                      Đối tác
                     </Link>
                   </li>
                   <li>
@@ -112,14 +112,14 @@ const Footer = () => {
                       to="#"
                     >
                       {" "}
-                      Press
+                      Bài báo
                     </Link>
                   </li>
                 </ul>
               </nav>
             </div>
             <div>
-              <p className="font-semibold text-black">Buy</p>
+              <p className="font-semibold text-black">Giao dịch</p>
               <nav aria-label="Footer Navigation - Company" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
@@ -127,7 +127,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      How to Buy
+                      Cách giao dịch
                     </Link>
                   </li>
                   <li>
@@ -135,7 +135,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      Buyer Protection
+                      Chính sách hoàn trả
                     </Link>
                   </li>
                   <li>
@@ -143,14 +143,14 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      Buyer terms
+                      Điều kiện mua
                     </Link>
                   </li>
                 </ul>
               </nav>
             </div>
             <div>
-              <p className="font-semibold text-black">Sell</p>
+              <p className="font-semibold text-black">Bán</p>
               <nav
                 aria-label="Footer Navigation - Helpful Links"
                 className="mt-6"
@@ -161,7 +161,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      How to Sell
+                      Cách bán
                     </Link>
                   </li>
                   <li>
@@ -169,7 +169,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      Seller Tips
+                      Mẹo bán
                     </Link>
                   </li>
                   <li>
@@ -177,7 +177,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      Seller Temrs
+                      Chính sách bán
                     </Link>
                   </li>
                   <li>
@@ -192,7 +192,7 @@ const Footer = () => {
               </nav>
             </div>
             <div>
-              <p className="font-semibold text-black">Legal</p>
+              <p className="font-semibold text-black">Pháp lý</p>
               <nav aria-label="Footer Navigation - Legal" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   <li>
@@ -200,7 +200,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      Our Policy
+                      Chính sách của chúng tôi
                     </Link>
                   </li>
                   <li>
@@ -208,7 +208,7 @@ const Footer = () => {
                       className="text-black transition hover:opacity-75"
                       to="#"
                     >
-                      Help Centre
+                      Trung tâm hỗ trợ
                     </Link>
                   </li>
                 </ul>

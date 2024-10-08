@@ -1,5 +1,8 @@
 import { Card, Row, Col } from "antd";
 import { Typography } from 'antd';
+import { Link } from 'react-router-dom';
+
+
 const products = [
   {
     title: "Digimon Card Game",
@@ -12,9 +15,9 @@ const products = [
     description: "Classic duel battles."
   },
   {
-    title: "One Piece Card Game",
-    imageSrc: "https://i.ytimg.com/vi/PJuiTrLR0pQ/maxresdefault.jpg",
-    description: "Join the Straw Hat Pirates."
+    title: "Pokémon Card Game",
+    imageSrc: "https://cdn.shopify.com/s/files/1/1601/1757/articles/How_Many_Pokemon_Cards_Are_There_So_Far_Late_2022.jpg?v=1664713281",
+    description: "Join the World of Pokémon."
   },
   {
     title: "Shadowverse Evolve",
@@ -31,13 +34,14 @@ const ProductList = () => {
     <Row gutter={16}>
       {products.map((product, index) => (
         <Col span={6} key={index}>  {/* 4 products per row */}
-          <Card
-            hoverable
-            cover={<img alt={product.title} src={product.imageSrc}  className="w-full h-48 object-cover"/>}
-          >
-            <Card.Meta title={product.title} />
-            
-          </Card>
+        <Link to={`/category/${product.title}`}> {/* Add Link to route */}
+              <Card
+                hoverable
+                cover={<img alt={product.title} src={product.imageSrc} className="w-full h-48 object-cover" />}
+              >
+                <Card.Meta title={product.title} />
+              </Card>
+            </Link>
         </Col>
       ))}
     </Row>
