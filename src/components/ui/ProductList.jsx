@@ -15,9 +15,9 @@ const products = [
     description: "Classic duel battles."
   },
   {
-    title: "One Piece Card Game",
-    imageSrc: "https://i.ytimg.com/vi/PJuiTrLR0pQ/maxresdefault.jpg",
-    description: "Join the Straw Hat Pirates."
+    title: "Pokémon Card Game",
+    imageSrc: "https://cdn.shopify.com/s/files/1/1601/1757/articles/How_Many_Pokemon_Cards_Are_There_So_Far_Late_2022.jpg?v=1664713281",
+    description: "Join the World of Pokémon."
   },
   {
     title: "Shadowverse Evolve",

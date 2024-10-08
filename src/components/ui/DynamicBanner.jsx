@@ -10,7 +10,6 @@ const contentStyle = {
 };
 const DynamicBanner = ({ img1, img2 }) => {
   const onChange = (currentSlide) => {
-    console.log(currentSlide);
   };
   return (
     <div className="relative">

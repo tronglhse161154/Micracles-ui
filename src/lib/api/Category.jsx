@@ -1,6 +1,6 @@
 
 
-import { setCategoriesList } from "../redux/reducers/categorySlice";
+import { setCategoriesList, setProductsBySubcategory } from "../redux/reducers/categorySlice";
 import { axiosClient } from "./config/axios-client";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -24,4 +24,16 @@ export const GetAllCategory = () => {
   }, [dispatch]);
 
   return null;
+};
+
+
+export const GetProductWithSubCategory = (subcategoryId) => async (dispatch) => {
+  try {
+    console.log(`Fetching products for subcategory ${subcategoryId}...`);
+    const response = await axiosClient.get(`/api/ProductImagesControllers/SubcategoryId?SubcategoryId=${subcategoryId}`);
+    dispatch(setProductsBySubcategory(response.data));
+    console.log('Products fetched:', response.data);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
 };
