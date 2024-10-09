@@ -36,20 +36,20 @@ const testimonials = [
     title: "Amazing good job!",
   },
   {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
+    quote: "Đa dạng nhiều lại thẻ bài quý hiếm, tôi sẽ tiếp tục ủng hộ trong tương lai",
+    name: "Tuấn Anh",
+    title: "So good !",
   },
   {
     quote:
-      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
+      "Tôi là 1 fan cứng của thẻ bài YugiOh, nhờ trang web này mà tôi có thể sưu tầm thêm những thẻ bài độc đáo vào bộ sưu tập của mình.",
+    name: "John Nguyen",
+    title: "Absolutely cinema !!",
   },
   {
     quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
+      "Tôi được bạn bè giới thiệu cho trang web này, giao diện đẹp mắt, mua sắm rất thích .",
+    name: "Trọng",
+    title: "Tuyệt vời !!!",
   },
 ];
