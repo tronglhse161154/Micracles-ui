@@ -29,7 +29,7 @@ function Navbar() {
             </div>
 
             <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
-              <Link to="/pokemon">
+              <Link to="/category/Pokémon%20Card%20Game">
                 <span>Pokemon Card Game</span>
               </Link>
             </div>
