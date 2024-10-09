@@ -1,5 +1,33 @@
 import { axiosClient } from "./config/axios-client";
 import { useSelector } from "react-redux";
+import nProgress from "nprogress";
+import "nprogress/nprogress.css";
+import { setProductsList } from "./../redux/reducers/productSlice"
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// Create a thunk for fetching all auction products
+export const fetchAllProducts = createAsyncThunk(
+  "products/fetchAll",
+  async (_, { dispatch }) => {
+    nProgress.start();
+    try {
+      console.log("Fetching products ...");
+
+      // Fetch products directly using async/await
+      const response = await axiosClient.get(`/api/ProductImagesControllers`);
+      const allProducts = response.data;
+
+      // Dispatch the products list to Redux
+      dispatch(setProductsList(allProducts));
+      console.log(allProducts);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      nProgress.done();
+    }
+  }
+);
+
 
 
 const useCreateProduct = () => {
