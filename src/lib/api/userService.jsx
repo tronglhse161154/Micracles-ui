@@ -19,10 +19,11 @@ export const getUserById = async (userId) => {
 
 export const updateUser = async (userId, userData) => {
   try {
-    console.log("Updating user data:", userData); // Logging payload
+    console.log("Updating user data:", userData); 
     const response = await axiosClient.patch('/api/UserControllers/UpdateUserByID', userData, {
-      params: { id: userId } // passing the id in query params
+      params: { id: userId }
     });
+    console.log("Update response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error);

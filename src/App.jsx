@@ -14,6 +14,7 @@ import ToasterProvider from "./providers/ToastProvider";
 import OTPConfirmModal from "./components/ui/modals/OTPconfirmModal";
 import Profile from "./pages/Profile";
 import AdminPage from "./pages/AdminPage";
+import ProductDetail from "./pages/DetailPage";
 
 function App() {
   const currentUser = useSelector((state) => state.users.currentUser);
@@ -33,7 +34,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/viewcard" element={<ViewCard />} />
-          <Route path="/card-detail/:id" element={<DetailPage />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/create-product" element={<CreatePage />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/profile" element={<Profile/>} />

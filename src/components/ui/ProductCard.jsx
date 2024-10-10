@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import LazyLoad from "react-lazyload";
 import { Typography, Pagination, Card, Skeleton } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../../lib/api/Product";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,16 +63,22 @@ const ProductCard = () => {
                   >
                     <CardBody className="relative p-6">
                       <CardItem className="mb-4" translateZ={50}>
-                        <img
-                          alt={product.productName}
-                          src={product.url}
-                          className="w-full"
-                        />
+                        {/* Wrap image in Link to navigate to product detail */}
+                        <Link to={`/product/${product.id}`}>
+                          <img
+                            alt={product.productName}
+                            src={product.url}
+                            className="w-full cursor-pointer"
+                          />
+                        </Link>
                       </CardItem>
                       <CardItem className="mb-2" translateZ={40}>
-                        <h3 className="text-xl font-bold">
-                          {product.productName}
-                        </h3>
+                        {/* Wrap product title in Link to navigate to product detail */}
+                        <Link to={`/product/${product.id}`}>
+                          <h3 className="text-xl font-bold cursor-pointer">
+                            {product.productName}
+                          </h3>
+                        </Link>
                       </CardItem>
                       <CardItem translateZ={30}>
                         <p className="card-item-description text-gray-600 no-scrollbar">
@@ -111,7 +116,7 @@ const ProductCard = () => {
       <div className="flex justify-center my-10">
         <Pagination
           current={currentPage}
-          total={sortedProductsList.length} 
+          total={sortedProductsList.length}
           pageSize={itemsPerPage}
           onChange={handlePageChange}
           showSizeChanger={false}
@@ -120,4 +125,5 @@ const ProductCard = () => {
     </>
   );
 };
+
 export default ProductCard;

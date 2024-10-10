@@ -124,5 +124,20 @@ const useCreateProduct = () => {
 
   return { createProduct, uploadImage, associateProductWithImage };
 };
+export const getProductById = async (id) => {
+  if (!id) {
+    throw new Error("ID is required.");
+  }
+
+  try {
+    const response = await axiosClient.get(`/api/ProductImagesControllers/productImages`, {
+      params: { id },  // Pass the id in params
+    });
+    return response.data;  // Return the product data
+  } catch (error) {
+    console.error("Error fetching product by ID:", error);
+    throw error;  // Throw error if there is an issue
+  }
+};
 
 export default useCreateProduct;

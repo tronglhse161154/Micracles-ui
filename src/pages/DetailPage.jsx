@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "../../product";
-import { Card, Row, Col, Button, InputNumber, Modal } from "antd";
-import { ShoppingCartOutlined ,PlusOutlined ,MinusOutlined } from "@ant-design/icons";
+import { Card, Row, Col, Button, InputNumber, Modal, message } from "antd";
+import { ShoppingCartOutlined, PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import RelactedCard from "../components/ui/RelactedCard";
 import Container from "../components/ui/Container";
 import ProductCard from "../components/ui/ProductCard";
+import { getProductById } from "../lib/api/Product";
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const product = products.find((p) => p.id === parseInt(id));
+  const { id } = useParams();// Lấy id từ params
+  const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [hovered, setHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isModalVisible, setIsModalVisible] = useState(false); // Modal visibility state
-  const [zoomLevel, setZoomLevel] = useState(1); // Zoom level state
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const fetchProduct = async () => {
+    try {
+      if (!id) {
+        message.error("No product ID found");
+        return;
+      }
+      const productData = await getProductById(id); // Gọi API với id từ params
+      setProduct(productData);
+    } catch (error) {
+      message.error("Cannot fetch product data");
+    }
+  };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    fetchProduct();
+  }, [id]); // Gọi fetchProduct mỗi khi id thay đổi
 
   const handleQuantityChange = (value) => {
     setQuantity(value);
@@ -42,7 +55,7 @@ const ProductDetail = () => {
 
   const showModal = () => {
     setIsModalVisible(true);
-    setZoomLevel(1); // Reset zoom level when opening modal
+    setZoomLevel(1);
   };
 
   const handleCancel = () => {
@@ -50,15 +63,15 @@ const ProductDetail = () => {
   };
 
   const zoomIn = () => {
-    setZoomLevel((prev) => prev + 0.1); // Increase zoom level
+    setZoomLevel((prev) => prev + 0.1);
   };
 
   const zoomOut = () => {
-    setZoomLevel((prev) => (prev > 1 ? prev - 0.1 : 1)); // Decrease zoom level, but not below 1
+    setZoomLevel((prev) => (prev > 1 ? prev - 0.1 : 1));
   };
 
   if (!product) {
-    return <h2>Product not found!</h2>;
+    return <h2>Loading...</h2>;
   }
 
   return (
@@ -75,10 +88,10 @@ const ProductDetail = () => {
                   onMouseMove={handleMouseMove}
                 >
                   <img
-                    alt={product.title}
-                    src={product.imageSrc}
-                    className="transition-transform duration-300 ease-in-out rounded-md cursor-pointer" // Added cursor-pointer
-                    onClick={showModal} // Show modal on click
+                    alt={product.productName}
+                    src={product.url}
+                    className="transition-transform duration-300 ease-in-out rounded-md cursor-pointer"
+                    onClick={showModal}
                     style={{
                       objectFit: "cover",
                       width: "100%",
@@ -90,14 +103,14 @@ const ProductDetail = () => {
                       className="absolute w-64 h-64 bg-no-repeat"
                       style={{
                         top: `${mousePosition.y}%`,
-                        left: `215%`, // Adjust to position it to the left side
-                        transform: "translateX(-100%)", // Ensure the popup stays on the left
-                        backgroundImage: `url(${product.imageSrc})`,
+                        left: `215%`,
+                        transform: "translateX(-100%)",
+                        backgroundImage: `url(${product.url})`,
                         backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
                         backgroundSize: "300%",
                         pointerEvents: "none",
                         zIndex: 10,
-                        overflow: "visible", // Ensure the popup is not clipped
+                        overflow: "visible",
                       }}
                     />
                   )}
@@ -108,25 +121,20 @@ const ProductDetail = () => {
           </Col>
           <Col xs={24} md={12}>
             <Card className="flex justify-center bg-yellow-50">
-              <h2 className="font-semibold text-5xl tracking-wide mb-5">
-                {product.title}
+              <h2 className="font-semibold text-xl tracking-wide mb-5">
+                {product.productName}
               </h2>
               <p>
-                {product.description.split("\n").map((line, index) => (
-                  <span key={index}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
+                {product.description 
+                  ? product.description.split("\n").map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        <br />
+                      </span>
+                    ))
+                  : "No description available"}
               </p>
-              <strong>
-                {product.ProductsDetail.split("\n").map((line, index) => (
-                  <span key={index}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </strong>
+              
               <div className="flex flex-row items-center justify-start gap-2 my-3">
                 <h3 className="text-sm"> Price:</h3>
                 <span>{product.price} đ</span>
@@ -164,21 +172,21 @@ const ProductDetail = () => {
 
       {/* Modal for enlarged image */}
       <Modal
-        title={product.title}
+        title={product.productName}
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
-        width={600} 
+        width={600}
       >
         <div className="flex flex-col items-center">
           <img
             alt={product.title}
-            src={product.imageSrc}
-            style={{ width: `${300 * zoomLevel}px`, height: 'auto' }} 
+            src={product.url}
+            style={{ width: `${300 * zoomLevel}px`, height: 'auto' }}
           />
           <div className="mt-2">
-            <Button onClick={zoomIn}><PlusOutlined/></Button>
-            <Button onClick={zoomOut} className="ml-2"><MinusOutlined/></Button>
+            <Button onClick={zoomIn}><PlusOutlined /></Button>
+            <Button onClick={zoomOut} className="ml-2"><MinusOutlined /></Button>
           </div>
         </div>
       </Modal>
