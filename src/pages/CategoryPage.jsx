@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import LazyLoad from "react-lazyload";
-import { useParams } from "react-router-dom";
+import { useParams ,Link} from "react-router-dom";
 import DynamicBanner from "../components/ui/DynamicBanner";
 import { useEffect } from "react";
 import { FlipWords } from "../components/ui/FlipWord";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProductWithSubCategory } from "../lib/api/Category";
-import Link from "antd/es/typography/Link";
+
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { CardContainer, CardBody, CardItem } from "../components/ui/3dCard";
 import Button from "../components/ui/Button";
@@ -110,11 +110,13 @@ const CategoryPage = () => {
                   >
                     <CardBody className="relative p-6">
                       <CardItem className="mb-4" translateZ={50}>
+                        <Link to={`/product/${product.id}`}> 
                         <img
                           alt={product.name}
                           src={product.url}
                           className="w-full"
                         />
+                        </Link>
                       </CardItem>
                       <CardItem className="mb-2" translateZ={40}>
                         <h3 className="text-xl font-bold">
