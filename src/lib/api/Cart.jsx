@@ -86,11 +86,13 @@ export const createOrder = async (userId) => {
   try {
     
     const response = await axiosClient.post(`/api/OrderProduct/AddOrder/OrderProduct`, null, {
-      params: { userId } // Thêm userId vào tham số truy vấn
+      params: { userId }
+      // Thêm userId vào tham số truy vấn
     });
     
     if (response.status === 200) {
-      return response.data.orderID; 
+      console.log(response.data.data.orderId)
+      return response.data.data.orderId; 
     } else {
       throw new Error("Failed to create order");
     }
