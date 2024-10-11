@@ -5,6 +5,7 @@ import ProductCard from "../components/ui/ProductCard";
 import News from "../components/ui/News";
 import { useEffect } from "react";
 import { Testimonials } from "../components/ui/Testimonial";
+import { Helmet } from "react-helmet";
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -12,6 +13,13 @@ const Home = () => {
   return (
     <>
       <div className="w-full">
+        <Helmet>
+          <title>{`Miracle Trading`}</title>
+          <meta
+            name="description"
+            content={`Discover more with Miracle Trading.`}
+          />
+        </Helmet>
         <BannerVd />
         <Container>
           <ProductList></ProductList>

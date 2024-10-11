@@ -40,7 +40,7 @@ export const CardContainer = ({
   return (
     (<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
-        className={cn("flex items-center justify-center", containerClassName)}
+        className={cn("flex items-center justify-center ", containerClassName)}
         style={{
           perspective: "1000px",
         }}>
@@ -50,11 +50,12 @@ export const CardContainer = ({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear rounded-3xl cursor-pointer shadow-3xl",
+            "flex flex-col items-center justify-center relative transition-all duration-200 ease-linear rounded-3xl cursor-pointer shadow-3xl hover:shadow-stone-500",
             className
           )}
           style={{
             transformStyle: "preserve-3d",
+            height: "100%",
           }}>
           {children}
         </div>
@@ -70,7 +71,7 @@ export const CardBody = ({
   return (
     (<div
       className={cn(
-        "h-full w-full [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
+        "flex flex-col flex-grow h-full w-full [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
         className
       )}>
       {children}

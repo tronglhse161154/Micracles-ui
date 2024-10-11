@@ -3,13 +3,20 @@ import Container from "../../ui/Container";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
-import useSearchModal from "../../hooks/useSearchModal"
+import useSearchModal from "../../hooks/useSearchModal";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-
   const searchModal = useSearchModal();
   const currentUser = useSelector((state) => state.users.currentUser);
+
+  // Get cart items from Redux
+  const cartItems = useSelector((state) => state.carts.cartItems);
+
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   return (
     <div className="fixed z-30 left-2 right-2 bottom-2 lg:bottom-auto lg:top-4 lg:left-4 lg:right-4 max-w-[1400px] mx-auto lg:flex lg:gap-4 lg:items-center">
@@ -41,7 +48,7 @@ function Navbar() {
             </div>
 
             <Link to="/">
-              <Logo w="100" h="100"/>
+              <Logo w="100" h="100" />
             </Link>
 
             <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
@@ -57,15 +64,23 @@ function Navbar() {
             </div>
 
             <div className="relative flex gap-10 ml-[120px] items-center ">
-              <div className="rounded-full hover:bg-primary transition cursor-pointer" onClick={searchModal.onOpen}>
+              <div
+                className="rounded-full hover:bg-primary transition cursor-pointer"
+                onClick={searchModal.onOpen}
+              >
                 <SearchIcon />
               </div>
               <div className="rounded-full hover:bg-primary transition cursor-pointer">
-                <Link to="/viewcard">
-                <CartIcon />
+                <Link to="/viewcart">
+                  <CartIcon />
+                  {totalQuantity > 0 && (
+                    <span className="absolute -top-2 -left-[-80px] bg-red-600 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                      {totalQuantity}
+                    </span>
+                  )}
                 </Link>
               </div>
-              <UserMenu currentUser={currentUser}/>
+              <UserMenu currentUser={currentUser} />
             </div>
           </div>
         </Container>
