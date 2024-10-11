@@ -15,7 +15,7 @@ import OTPConfirmModal from "./components/ui/modals/OTPconfirmModal";
 import Profile from "./pages/Profile";
 import AdminPage from "./pages/AdminPage";
 import ProductDetail from "./pages/DetailPage";
-
+import InvoicePage from "./pages/InvoicePage";
 function App() {
   const currentUser = useSelector((state) => state.users.currentUser);
   const isAdmin = currentUser?.Role === "Admin";
@@ -33,6 +33,7 @@ function App() {
           <Route path="/" element={isAdmin ? <Navigate to="/admin" /> : <Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/invoice" element={<InvoicePage />} />
           <Route path="/viewcart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/create-product" element={<CreatePage />} />

@@ -82,4 +82,29 @@ export const fetchCartProductDetail = async (productId) => {
   }
 };
 
+export const createOrder = async (userId) => {
+  try {
+    
+    const response = await axiosClient.post(`/api/OrderProduct/AddOrder/OrderProduct`, null, {
+      params: { userId } // Thêm userId vào tham số truy vấn
+    });
+    
+    if (response.status === 200) {
+      return response.data.orderID; 
+    } else {
+      throw new Error("Failed to create order");
+    }
+  } catch (error) {
+    console.error("Error creating order:", error.response ? error.response.data : error);
+    throw error;
+  }
+};
+
+export const fetchOrderById = async (orderId) => {
+  const response = await axiosClient.get(`/api/OrderProduct/${orderId}`); // Adjust the URL according to your backend
+  if (!response.ok) {
+    throw new Error("Failed to fetch order data");
+  }
+  return await response.json();
+};
 
