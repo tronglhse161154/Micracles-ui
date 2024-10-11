@@ -1,6 +1,7 @@
 import { axiosClient } from "./config/axios-client";
 import { setCurrentUser } from "../redux/reducers/userSlice";
 import { use } from "framer-motion/client";
+import { message } from "antd";
 export const getUserById = async (userId) => {
   try {
     const response = await axiosClient.get(`/api/UserControllers/GetUserByID`, {
@@ -31,3 +32,14 @@ export const updateUser = async (userId, userData) => {
   }
 };
 
+export const getAllUser = async () => {
+  try {
+    const res = await axiosClient.get('/api/UserControllers/GetAllUsers');
+    console.log("API response:", res); // Add this to inspect the response
+    return res.data;
+  } catch (error) {
+    message.error("Error fetching users");
+    console.error("Error fetching users:", error);
+    throw error; // Throw the error if you want to handle it elsewhere
+  }
+}
