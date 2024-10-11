@@ -5,7 +5,7 @@ import Footer from "./components/layout/footer/Footer";
 import Home from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import ViewCard from "./pages/ViewCard";
+import CartPage from "./pages/ViewCart";
 import DetailPage from "./pages/DetailPage";
 import CreatePage from "./pages/CreateProduct";
 import CategoryPage from "./pages/CategoryPage";
@@ -33,7 +33,7 @@ function App() {
           <Route path="/" element={isAdmin ? <Navigate to="/admin" /> : <Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/viewcard" element={<ViewCard />} />
+          <Route path="/viewcart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/create-product" element={<CreatePage />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />

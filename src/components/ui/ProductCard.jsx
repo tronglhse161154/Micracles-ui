@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import LazyLoad from "react-lazyload";
 import { Typography, Pagination, Card, Skeleton } from "antd";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../../lib/api/Product";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./Button";
-import { CardContainer, CardBody, CardItem } from "../ui/3dCard"
+import { CardContainer, CardBody, CardItem } from "../ui/3dCard";
+import { Border } from "./MovingBorder";
 
 const ProductCard = () => {
   const { Title } = Typography;
@@ -15,7 +16,11 @@ const ProductCard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  const sortedProductsList = [...productsList].sort((a, b) => a.quantity - b.quantity);
+  const sortedProductsList = [...productsList].sort(
+    (a, b) => a.quantity - b.quantity
+  );
+  console.log(sortedProductsList[0]);
+  const productListRef = useRef(null);
 
   useEffect(() => {
     setLoading(true);
@@ -33,15 +38,23 @@ const ProductCard = () => {
   // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    productListRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
     <>
-      <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6 ">
+      <Title
+        ref={productListRef}
+        level={2}
+        className="text-[#FFE8AC] text-center my-6 py-6 "
+      >
         Sản phẩm bán chạy nhất
       </Title>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5 gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5 gap-12 ">
         {loading
           ? Array.from({ length: itemsPerPage }).map((_, index) => (
               <Skeleton.Button
@@ -56,7 +69,7 @@ const ProductCard = () => {
           : currentProducts.length > 0
           ? currentProducts.map((product) => (
               <LazyLoad key={product.id} height={350} offset={100} once>
-                <div key={product.id} className="flex justify-center">
+                <div key={product.id} className="flex justify-center h-full">
                   <CardContainer
                     className="bg-white shadow-lg"
                     containerClassName="max-w-xs"
@@ -72,7 +85,7 @@ const ProductCard = () => {
                           />
                         </Link>
                       </CardItem>
-                      <CardItem className="mb-2" translateZ={40}>
+                      <CardItem className="mb-2 flex-grow" translateZ={40}>
                         {/* Wrap product title in Link to navigate to product detail */}
                         <Link to={`/product/${product.id}`}>
                           <h3 className="text-xl font-bold cursor-pointer">
@@ -81,7 +94,7 @@ const ProductCard = () => {
                         </Link>
                       </CardItem>
                       <CardItem translateZ={30}>
-                        <p className="card-item-description text-gray-600 no-scrollbar">
+                        <p className="card-item-description text-gray-600 no-scrollbar flex-grow">
                           {product.description}
                         </p>
                       </CardItem>
@@ -98,10 +111,12 @@ const ProductCard = () => {
                           </div>
                         </CardItem>
                         <div className="">
-                          <Button
-                            label="Thêm vào giỏ"
-                            containerStyles="hover:no-underline hover:rounded-tl-2xl hover:rounded-br-2xl hover:bg-primary transition-all duration-100 ease-out clickable flex items-center whitespace-nowrap justify-center font-semibold p-2 sm-bold-caps gap-x-2 border border-primary hover:text-black hover:border-primary active:border-primary active:text-black w-full text-black cursor-pointer"
-                          />
+                          <Border
+                            borderRadius="1.75rem"
+                            className="bg-white text-black border-neutral-200"
+                          >
+                            Còn lại : {product.quantity}
+                          </Border>
                         </div>
                       </div>
                     </CardBody>

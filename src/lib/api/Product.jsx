@@ -2,7 +2,7 @@ import { axiosClient } from "./config/axios-client";
 import { useSelector } from "react-redux";
 import nProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { setProductsList } from "./../redux/reducers/productSlice"
+import { setProductsList, setDetailProduct } from "./../redux/reducers/productSlice"
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // Create a thunk for fetching all auction products
@@ -124,20 +124,32 @@ const useCreateProduct = () => {
 
   return { createProduct, uploadImage, associateProductWithImage };
 };
-export const getProductById = async (id) => {
+
+export default useCreateProduct;
+
+
+export const getProductById = (id) => async (dispatch) => {
   if (!id) {
     throw new Error("ID is required.");
   }
 
   try {
+    // Fetch product data from API
     const response = await axiosClient.get(`/api/ProductImagesControllers/productImages`, {
-      params: { id },  // Pass the id in params
+      params: { id }, // Pass the id in params
     });
-    return response.data;  // Return the product data
+
+    const productData = response.data;
+
+    // Dispatch the product data to the Redux store
+    dispatch(setDetailProduct(productData)); // Save product detail in the store
+
+    return productData; // Return the product data
   } catch (error) {
     console.error("Error fetching product by ID:", error);
-    throw error;  // Throw error if there is an issue
+    throw error; // Throw error if there is an issue
   }
 };
 
-export default useCreateProduct;
+
+

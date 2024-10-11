@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LazyLoad from "react-lazyload";
-import { useParams ,Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import DynamicBanner from "../components/ui/DynamicBanner";
 import { useEffect } from "react";
 import { FlipWords } from "../components/ui/FlipWord";
@@ -16,6 +16,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { Pagination } from "antd";
 import nProgress, { start } from "nprogress";
 import "nprogress/nprogress.css";
+import { Helmet } from "react-helmet";
+import { Border } from "../components/ui/MovingBorder";
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
@@ -65,7 +67,7 @@ const CategoryPage = () => {
       dispatch(GetProductWithSubCategory(selectedCategory.subcategoryId)).then(
         () => setLoading(false)
       );
-      nProgress.done()
+      nProgress.done();
     }
   }, [dispatch, selectedCategory?.subcategoryId]);
 
@@ -84,6 +86,13 @@ const CategoryPage = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>{`${decodedCategoryName} - Miracle Trading`}</title>
+        <meta
+          name="description"
+          content={`Explore the best products in the ${decodedCategoryName} category. Discover more with Miracle Trading.`}
+        />
+      </Helmet>
       <DynamicBanner
         img1={selectedCategory?.img1}
         img2={selectedCategory?.img2}
@@ -103,19 +112,19 @@ const CategoryPage = () => {
           : currentProducts.length > 0
           ? currentProducts.map((product) => (
               <LazyLoad key={product.id} height={350} offset={100} once>
-                <div key={product.id} className="flex justify-center">
+                <div key={product.id} className="flex justify-center h-full">
                   <CardContainer
                     className="bg-white shadow-lg"
                     containerClassName="max-w-xs"
                   >
                     <CardBody className="relative p-6">
                       <CardItem className="mb-4" translateZ={50}>
-                        <Link to={`/product/${product.id}`}> 
-                        <img
-                          alt={product.name}
-                          src={product.url}
-                          className="w-full"
-                        />
+                        <Link to={`/product/${product.id}`}>
+                          <img
+                            alt={product.name}
+                            src={product.url}
+                            className="w-full"
+                          />
                         </Link>
                       </CardItem>
                       <CardItem className="mb-2" translateZ={40}>
@@ -141,13 +150,12 @@ const CategoryPage = () => {
                           </div>
                         </CardItem>
                         <div className="">
-                          <Button
-                            label="Thêm vào giỏ"
-                            containerStyles="hover:no-underline hover:rounded-tl-2xl hover:rounded-br-2xl hover:bg-primary transition-all duration-100 ease-out clickable flex items-center whitespace-nowrap justify-center font-semibold p-2 sm-bold-caps gap-x-2 border border-primary
-      hover:text-black hover:border-primary
-      active:border-primary active:text-black
-      w-full text-black cursor-pointer"
-                          />
+                        <Border
+                            borderRadius="1.75rem"
+                            className="bg-white text-black border-neutral-200"
+                          >
+                            Còn lại : {product.quantity}
+                          </Border>
                         </div>
                       </div>
                     </CardBody>
