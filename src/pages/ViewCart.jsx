@@ -66,9 +66,11 @@ const CartPage = () => {
   const handleCreateOrder = async () => {
     if (currentUser) {
       try {
-        const response = await createOrder(currentUser.ID);
-        toast.success("Đơn hàng được tạo thành công với ID: " + response);
-        console.log("OrderId", response)
+        const orderID = await createOrder(currentUser.ID);
+        toast.success("Đơn hàng được tạo thành công với ID");
+        console.log("OrderId", orderID)
+        navigate(`/order/${orderID}`); 
+      
       } catch (error) {
         console.error("Failed to create order", error);
         toast.error("Đã xảy ra lỗi khi tạo đơn hàng");
@@ -161,7 +163,7 @@ const CartPage = () => {
               className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-6 hover:bg-blue-600"
               onClick={handleCreateOrder}
             >
-              Thanh toán ngay
+              Thanh toán
             </button>
           </div>
         </div>

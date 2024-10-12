@@ -102,11 +102,54 @@ export const createOrder = async (userId) => {
   }
 };
 
-export const fetchOrderById = async (orderId) => {
-  const response = await axiosClient.get(`/api/OrderProduct/${orderId}`); // Adjust the URL according to your backend
-  if (!response.ok) {
-    throw new Error("Failed to fetch order data");
+
+export const fetchOrderDetails = async (orderId) => {
+  try {
+    const response = await axiosClient.get(`/api/OrderControllers/id`, {
+      params: { orderId },
+    });
+
+    if (response.status === 200) {
+      return response.data; // Giả sử response.data chứa thông tin đơn hàng
+    } else {
+      throw new Error("Failed to fetch order details");
+    }
+  } catch (error) {
+    console.error("Error fetching order details:", error);
+    throw error;
   }
-  return await response.json();
 };
+
+
+
+
+export const paymentVNPay = async (userId, orderId) => {
+  try {
+    // Gửi userId và orderId dưới dạng query parameters
+    const response = await axiosClient.post(`/api/Payment/payment/vnpay`, null, {
+      params: { 
+        userId: userId,  // Truyền userId vào params
+        orderId: orderId // Truyền orderId vào params
+      },
+    });
+    
+    console.log("UserID:", userId);
+    console.log("OrderID:", orderId);
+    
+    return response.data.url; // Trả về URL thanh toán
+  } catch (error) {
+    console.error('Payment API error:', error);
+    throw error;
+  }
+};
+
+
+
+
+
+
+
+
+
+
 
