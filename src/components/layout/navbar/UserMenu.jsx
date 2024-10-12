@@ -21,6 +21,8 @@ const UserMenu = ({ currentUser }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
+  const closeMenu = () => setIsOpen(false);
+
   useEffect(() => {
     // Check if user is stored in sessionStorage and set it in Redux
     const user = sessionStorage.getItem("user");
@@ -63,6 +65,7 @@ const UserMenu = ({ currentUser }) => {
                 <>
                   <MenuItem
                     onClick={() => {}}
+                    closeMenu={closeMenu}
                     label="Thống kê"
                     icon={<MdDashboard size={20} />}
                   />
@@ -73,6 +76,7 @@ const UserMenu = ({ currentUser }) => {
                   />
                   <MenuItem
                     onClick={handleLogout}
+                    closeMenu={closeMenu}
                     label="Đăng xuất"
                     icon={<HiOutlineLogin size={20} />}
                   />
@@ -105,12 +109,14 @@ const UserMenu = ({ currentUser }) => {
                 <Link to={`/profile`}>
                   <MenuItem
                     onClick={() => {}}
+                    closeMenu={closeMenu}
                     label="Thông tin của tôi"
                     icon={<CgProfile size={20} />}
                   />
                   </Link>
                   <MenuItem
-                    onClick={() => {}}
+                    onClick={() => navigate("/History/HistoryView")}
+                    closeMenu={closeMenu}
                     label="Lịch sử"
                     icon={<FaHistory size={20} />}
                   />
@@ -135,11 +141,13 @@ const UserMenu = ({ currentUser }) => {
               <>
                 <MenuItem
                   onClick={() => navigate("/login")}
+                  closeMenu={closeMenu}
                   label="Đăng nhập"
                   icon={<LoginIcon size={20} />}
                 />
                 <MenuItem
                   onClick={() => navigate("register")}
+                  closeMenu={closeMenu}
                   label="Đăng ký"
                   icon={<SignupIcon size={20} />}
                 />

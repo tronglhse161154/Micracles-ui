@@ -1,95 +1,138 @@
-import React from 'react';
-import { Card, Row, Col, Button, Typography } from 'antd';
-import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from "react";
+import LazyLoad from "react-lazyload";
+import { Typography } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Pagination } from "antd";
+import nProgress, { start } from "nprogress";
+import "nprogress/nprogress.css";
+import { CardContainer, CardBody, CardItem } from "../ui/3dCard";
+import { fetchAllProducts } from "../../lib/api/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { Border } from "./MovingBorder";
 
-const RelactedCard = () => {
-    const { Title } = Typography;
+const RelactedCard = ({ brand }) => {
+  const { Title } = Typography;
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
+  const dispatch = useDispatch();
 
-    const relatedProducts = [
-        {
-            id: 2,
-            title: "Veemon - BT11",
-            imageSrc: "https://cardotaku.com/cdn/shop/files/043660_P_IYUIEX.jpg?v=1686731648&width=2048",
-            price: "10,000",
-            description: "Mô tả sản phẩm Veemon",
-        },
-        {
-            id: 3,
-            title: "Zudomon ACE - BT14",
-            imageSrc: "https://cardotaku.com/cdn/shop/products/037223_P_BUSUTA.jpg?v=1573796364&width=2048",
-            price: "180,000",
-            description: "Mô tả sản phẩm Zudomon ACE",
-        },
-        {
-          id: 4,
-          title: "Zudomon ACE - BT14",
-          imageSrc: "https://cardotaku.com/cdn/shop/products/037223_P_BUSUTA.jpg?v=1573796364&width=2048",
-          price: "180,000",
-          description: "Mô tả sản phẩm Zudomon ACE",
-      },
-      {
-        id: 5,
-        title: "Zudomon ACE - BT14",
-        imageSrc: "https://cardotaku.com/cdn/shop/products/037223_P_BUSUTA.jpg?v=1573796364&width=2048",
-        price: "180,000",
-        description: "Mô tả sản phẩm Zudomon ACE",
-    },
-    {
-      id: 6,
-      title: "Zudomon ACE - BT14",
-      imageSrc: "https://cardotaku.com/cdn/shop/products/037223_P_BUSUTA.jpg?v=1573796364&width=2048",
-      price: "180,000",
-      description: "Mô tả sản phẩm Zudomon ACE",
-  },
-        // more products...
-    ];
+  const products = useSelector((state) => state.products.productsList);
 
-    return (
-        <>
-            <Title level={2} className="text-[#FFE8AC] text-center my-6 py-6">
-                Sản phẩm liên quan
-            </Title>
-            <Row gutter={16} justify="center">
-                {relatedProducts.map((relatedProduct) => (
-                    <Col span={4} key={relatedProduct.id} className="mx-6 py-4">
-                        <Card
-                            hoverable
-                            cover={
-                                <Link to={`/card-detail/${relatedProduct.id}`}>
-                                    <img alt={relatedProduct.title} src={relatedProduct.imageSrc} className="w-full object-cover" />
-                                </Link>
-                            }
-                        >
-                            <Card.Meta title={relatedProduct.title} />
-                            <Card.Meta description={relatedProduct.description} />
-                            <div className="flex items-center justify-between mt-8">
-                                <p className="text-lg font-bold text-gray-900">
-                                    {relatedProduct.price} đ
-                                </p>
-                                <Button
-                                    icon={<ShoppingCartOutlined />}
-                                    size="small"
-                                    className="ml-2"
-                                />
-                            </div>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
-            <div className="flex justify-center py-6">
-                <Link>
-                    <Button
-                        type="primary"
-                        size="large"
-                        className="px-6 py-4 text-lg bg-slate-300 text-black rounded hover:bg-slate-100"
-                    >
-                        Xem thêm
-                    </Button>
-                </Link>
-            </div>
-        </>
-    );
+  const productListRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setLoading(true);
+    dispatch(fetchAllProducts()).then(() => setLoading(false));
+  }, [dispatch]);
+
+  // Filter products by brand
+  const filteredProducts = products.filter(
+    (product) => product.brand === brand
+  );
+
+  // Get the current products for pagination
+  const indexOfLastProduct = currentPage * itemsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  // Handler for pagination change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    productListRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  return (
+    <>
+      <Title
+        ref={productListRef}
+        level={2}
+        className="text-[#FFE8AC] text-center"
+      ></Title>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5 gap-12">
+        {loading
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <Skeleton key={index} height={350} className="max-w-xs" />
+            ))
+          : currentProducts.length > 0
+          ? currentProducts.map((product) => (
+              <LazyLoad key={product.id} height={350} offset={100} once>
+                <div key={product.id} className="flex justify-center h-full">
+                  <CardContainer
+                    className="bg-white shadow-lg"
+                    containerClassName="max-w-xs"
+                  >
+                    <CardBody className="relative p-6">
+                      <CardItem className="mb-4" translateZ={50}>
+                        <Link to={`/product/${product.id}`}>
+                          <img
+                            alt={product.name}
+                            src={product.url}
+                            className="w-full"
+                          />
+                        </Link>
+                      </CardItem>
+                      <CardItem className="mb-2" translateZ={40}>
+                        <h3 className="text-xl font-bold">
+                          {product.productName}
+                        </h3>
+                      </CardItem>
+                      <CardItem translateZ={30}>
+                        <p className="card-item-description text-gray-600 no-scrollbar">
+                          {product.description}
+                        </p>
+                      </CardItem>
+                      <div className="flex flex-row items-center gap-4 mt-4">
+                        <CardItem translateZ={20}>
+                          <div className="flex items-center justify-between">
+                            <p className="text-lg font-bold text-gray-900 flex items-center justify-start gap-1">
+                              <span>Giá :</span>
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(product.price)}
+                            </p>
+                          </div>
+                        </CardItem>
+                        <div className="">
+                          <Border
+                            borderRadius="1.75rem"
+                            className="bg-white text-black border-neutral-200"
+                          >
+                            Còn lại : {product.quantity}
+                          </Border>
+                        </div>
+                      </div>
+                    </CardBody>
+                  </CardContainer>
+                </div>
+              </LazyLoad>
+            ))
+          : !loading && <p>No products found for this subcategory.</p>}
+      </div>
+
+      {/* Ant Design Pagination */}
+      <div className="flex justify-center mt-8">
+        <Pagination
+          current={currentPage}
+          total={filteredProducts.length}
+          pageSize={itemsPerPage}
+          onChange={handlePageChange}
+          showSizeChanger={false}
+        />
+      </div>
+    </>
+  );
 };
 
 export default RelactedCard;

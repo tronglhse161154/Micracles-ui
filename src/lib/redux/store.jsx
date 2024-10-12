@@ -1,14 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit'; 
-import userSlice,{setCurrentUser} from './reducers/userSlice';
-import productSlice from './reducers/productSlice';
-import categorySlice from './reducers/categorySlice';
+import { configureStore } from "@reduxjs/toolkit";
+import userSlice, { setCurrentUser } from "./reducers/userSlice";
+import productSlice from "./reducers/productSlice";
+import categorySlice from "./reducers/categorySlice";
+import cartSlice from "./reducers/cartSlice";
+
 
 const store = configureStore({
   reducer: {
     users: userSlice,
     products: productSlice,
     categories: categorySlice,
-
+    carts: cartSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

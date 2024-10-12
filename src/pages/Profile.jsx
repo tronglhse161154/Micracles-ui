@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Card, Avatar, Button, Input, Modal, message } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUser, setUpdateUser } from "../lib/redux/reducers/userSlice"; // Import setUpdateUser
-import { getUserById, updateUser } from "../lib/api/userService"; // Import updateUser function
+import { setUpdateUser } from "../lib/redux/reducers/userSlice"; 
+import { getUserById, updateUser } from "../lib/api/userService"; 
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -11,36 +11,32 @@ const UserProfile = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingUser, setEditingUser] = useState({});
   const User = useSelector((state) => state.users.currentUser);
-  
-  console.log("Current User from Redux:", User); // Kiểm tra giá trị User
 
+  // Fetch user data
   const fetchUser = async () => {
     try {
       if (!User?.ID) {
         message.error("User ID is missing, cannot fetch user data!");
-        return; // Trả về nếu không có ID
+        return;
       }
-  
-      console.log("Fetching user with ID:", User?.ID); // Kiểm tra ID
-      const userData = await getUserById(User.ID); // Sử dụng ID trực tiếp
+
+      const userData = await getUserById(User.ID);
       setUser(userData);
       setEditingUser(userData);
+      console.log("user data",userData);
     } catch (error) {
       message.error("Failed to fetch user data");
     }
   };
-  
 
   useEffect(() => {
     if (User?.ID) {
       fetchUser();
-    } else {
-      message.error("User ID is missing, cannot fetch user data!");
     }
   }, [User]);
 
   const showEditModal = () => {
-    setEditingUser(user); // Load current information into the modal
+    setEditingUser(user || {}); // Check if user is null
     setIsModalVisible(true);
   };
 
@@ -49,33 +45,34 @@ const UserProfile = () => {
       message.error("User ID is missing!");
       return;
     }
-  
+
     try {
+      console.log("Updating user data: ", editingUser);
+
       const updatedData = await updateUser(User.ID, {
-        id: User.ID, // Đảm bảo gửi id trong payload
+        id: User.ID,  // You might want to keep this if your API needs it
         userName: editingUser.userName,
         password: editingUser.password,
-        fullName: editingUser.fullName,
+        fullName: String(editingUser.fullName),
         email: editingUser.email,
         phoneNumber: editingUser.phoneNumber,
         province: editingUser.province,
         district: editingUser.district,
         address: editingUser.address,
-        status: editingUser.status,
+        status: String(editingUser.status),
+        // Do not include status in the update payload
       });
-  
-     
-      dispatch(setUpdateUser(updatedData)); 
-  
-      await fetchUser(); 
-  
+
+      console.log("Updated Data Response: ", updatedData); // Log the API response
+      dispatch(setUpdateUser(updatedData));
+      await fetchUser();
+
       message.success("Profile updated successfully!");
       setIsModalVisible(false);
     } catch (error) {
       message.error("Failed to update profile!");
     }
   };
-  
 
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -101,9 +98,8 @@ const UserProfile = () => {
           />
         </div>
         <div className="text-center mt-4">
-          <h2 className="text-xl font-semibold">{user.fullName}</h2>
-          <p className="text-gray-600">{user.profession}</p>
-          <p className="text-gray-500">{user.email}</p>
+          <h2 className="text-xl font-semibold">{user?.fullName || "Unknown"}</h2>
+          
           <Button
             icon={<EditOutlined />}
             onClick={showEditModal}
@@ -114,22 +110,16 @@ const UserProfile = () => {
         </div>
       </Card>
 
-      {/* Edit Profile Modal */}
       <Modal
         title="Edit Profile"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <Input
-          placeholder="ID"
-          value={editingUser.id} // Hiển thị đúng ID từ editingUser
-          disabled // Đảm bảo trường ID không được phép chỉnh sửa
-          className="mb-2"
-        />
+        {/* Removed the ID input field */}
         <Input
           placeholder="Full Name"
-          value={editingUser.fullName}
+          value={editingUser?.fullName || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, fullName: e.target.value })
           }
@@ -137,7 +127,7 @@ const UserProfile = () => {
         />
         <Input
           placeholder="Password"
-          value={editingUser.password}
+          value={editingUser?.password || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, password: e.target.value })
           }
@@ -145,7 +135,7 @@ const UserProfile = () => {
         />
         <Input
           placeholder="Email"
-          value={editingUser.email}
+          value={editingUser?.email || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, email: e.target.value })
           }
@@ -153,7 +143,7 @@ const UserProfile = () => {
         />
         <Input
           placeholder="Phone Number"
-          value={editingUser.phoneNumber}
+          value={editingUser?.phoneNumber || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, phoneNumber: e.target.value })
           }
@@ -161,7 +151,7 @@ const UserProfile = () => {
         />
         <Input
           placeholder="Province"
-          value={editingUser.province}
+          value={editingUser?.province || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, province: e.target.value })
           }
@@ -169,7 +159,7 @@ const UserProfile = () => {
         />
         <Input
           placeholder="District"
-          value={editingUser.district}
+          value={editingUser?.district || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, district: e.target.value })
           }
@@ -177,20 +167,13 @@ const UserProfile = () => {
         />
         <Input
           placeholder="Address"
-          value={editingUser.address}
+          value={editingUser?.address || ""}
           onChange={(e) =>
             setEditingUser({ ...editingUser, address: e.target.value })
           }
           className="mb-2"
         />
-        <Input
-          placeholder="Status"
-          value={editingUser.status}
-          onChange={(e) =>
-            setEditingUser({ ...editingUser, status: e.target.value })
-          }
-          className="mb-2"
-        />
+        {/* Removed the Status input field */}
       </Modal>
     </div>
   );
