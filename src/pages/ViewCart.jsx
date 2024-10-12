@@ -67,7 +67,7 @@ const CartPage = () => {
     if (currentUser) {
       try {
         const orderID = await createOrder(currentUser.ID);
-        toast.success("Đơn hàng được tạo thành công");
+        toast.success("Đơn hàng được tạo thành công!!!");
         console.log("OrderId", orderID)
         navigate(`/order/${orderID}`); 
       
