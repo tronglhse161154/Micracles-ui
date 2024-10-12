@@ -53,24 +53,30 @@ const OrderPage = () => {
         <div className="lg:col-span-2">
           <h1 className="text-2xl mb-5">Chi tiết đơn hàng</h1>
           <div className="bg-white p-4 shadow-md rounded-lg">
-            <p>Mã đơn hàng: {orderDetails.id}</p>
-            <p>Ngày đặt hàng: {new Date(orderDetails.orderDate).toLocaleDateString()}</p>
-            <p>Tổng tiền: {orderDetails.totalPrice} VND</p>
+            <div className="text-lg font-bold py-2">
+            Mã đơn hàng: {orderDetails.id}
+            </div>
+            <div className="text-lg font-bold py-2">
+            Ngày đặt hàng: {new Date(orderDetails.orderDate).toLocaleDateString()}
+            </div>
+            <div className="text-lg font-bold py-2">
+                Tổng tiền: {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(orderDetails.totalPrice)}
+                  
+                </div>
             {/* Thông tin sản phẩm */}
             {/* Render các sản phẩm trong orderProducts */}
           </div>
         </div>
 
         {/* Nút thanh toán */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">Thanh toán ngay</h2>
-          <Button
-            type="primary"
-            className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-6 hover:bg-blue-600"
-            onClick={handlePayment}
-          >
-            Thanh toán ngay
-          </Button>
+        <div className="bg-gray-100  rounded-lg shadow-md">
+          <h2 className="flex justify-center text-2xl font-bold mb-4 ">Thanh toán ngay</h2>
+          <button
+              className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-20 hover:bg-blue-600"
+              onClick={handlePayment}
+            >
+              Thanh toán ngay
+            </button>
         </div>
       </div>
     </div>
