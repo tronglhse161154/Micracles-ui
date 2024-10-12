@@ -1,4 +1,13 @@
-import { BellIcon, CartIcon, SearchIcon, UserIcon } from "../../common/icons";
+import {
+  BellIcon,
+  CartIcon,
+  SearchIcon,
+  UserIcon,
+  YughiOhIcon,
+  PokemonIcon,
+  DigimonIcon,
+  ShadowverseIcon,
+} from "../../common/icons";
 import Container from "../../ui/Container";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
@@ -23,27 +32,27 @@ function Navbar() {
       <div className="bg-yellow-50 backdrop-blur-md lg:grow flex items-center pl-3 pr-1 py-1 lg:pl-4 rounded-3xl gap-2 lg:gap-4 h-[85px] opacity-90 shadow-custom-overflow ">
         <Container>
           <div className="flex flex-row items-center justify-center hover:text-neutral-800 ">
-            <div className="relative flex gap-5 items-center mr-[120px]">
+            <div className="relative flex gap-20 items-center mr-[120px]">
               <div className="rounded-full hover:bg-[#FFE8AC] transition cursor-pointer">
                 <BellIcon />
               </div>
 
-              <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
+              <div className="hover:no-underline  px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
                 <Link to="/">
                   <span>Liên hệ</span>
                 </Link>
               </div>
             </div>
 
-            <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
+            <div className="hover:no-underline  px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
               <Link to="/category/Pokémon%20Card%20Game">
-                <span>Pokemon Card Game</span>
+                <PokemonIcon w={130} h={100} />
               </Link>
             </div>
 
-            <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
+            <div className="hover:no-underline  px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
               <Link to="/elite-exclusive">
-                <span>The Elite Exclusive</span>
+                <YughiOhIcon w={130} h={100} />
               </Link>
             </div>
 
@@ -51,15 +60,15 @@ function Navbar() {
               <Logo w="100" h="100" />
             </Link>
 
-            <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
+            <div className="hover:no-underline px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
               <Link to="/digimon">
-                <span>Digimon Card Game</span>
+                <DigimonIcon w={130} h={100} />
               </Link>
             </div>
 
-            <div className="hover:no-underline hover:bg-primary px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
+            <div className="hover:no-underline px-3 py-2 rounded-full flex flex-col md:flex-row md:gap-2 justify-center items-center relative md:md-bold-caps whitespace-nowrap">
               <Link to="/one-piece">
-                <span>One Piece Card Game</span>
+                <ShadowverseIcon w={130} h={100} />
               </Link>
             </div>
 

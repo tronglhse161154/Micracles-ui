@@ -14,7 +14,7 @@ const ProductCard = () => {
   const productsList = useSelector((state) => state.products.productsList);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 16;
 
   const sortedProductsList = [...productsList].sort(
     (a, b) => a.quantity - b.quantity

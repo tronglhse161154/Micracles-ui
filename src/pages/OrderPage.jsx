@@ -53,9 +53,10 @@ const OrderPage = () => {
         <div className="lg:col-span-2">
           <h1 className="text-2xl mb-5">Chi tiết đơn hàng</h1>
           <div className="bg-white p-4 shadow-md rounded-lg">
-            <p>Mã đơn hàng: {orderDetails.id}</p>
-            <p>Ngày đặt hàng: {new Date(orderDetails.orderDate).toLocaleDateString()}</p>
-            <p>Tổng tiền: {orderDetails.totalPrice} VND</p>
+            <p>Mã đơn hàng : {orderDetails.id}</p>
+            <p>Ngày đặt hàng : {new Date(orderDetails.orderDate).toLocaleDateString()}</p>
+            <p>Tổng tiền :
+            {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(`${orderDetails.totalPrice}`)}</p>
             {/* Thông tin sản phẩm */}
             {/* Render các sản phẩm trong orderProducts */}
           </div>
