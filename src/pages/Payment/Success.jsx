@@ -1,10 +1,7 @@
 
 
 import Container from "../../components/ui/Container";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import nProgress from "nprogress";
-import "nprogress/nprogress.css";
+import { useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -12,8 +9,7 @@ import Button from "../../components/ui/Button";
 
 const PaymentSuccess = () => {
   const navigate = useNavigate;
-  const [queryParams, setQueryParams] = useState({});
-  const { id } = useParams();
+  const [, setQueryParams] = useState({});
   useEffect(() => {
     if (navigate.isReady) {
       const { vnp_Amount, vnp_PayDate, vnp_TxnRef } = navigate.query;

@@ -4,7 +4,6 @@ import { Typography, Pagination, Card, Skeleton } from "antd";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../../lib/api/Product";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "./Button";
 import { CardContainer, CardBody, CardItem } from "../ui/3dCard";
 import { Border } from "./MovingBorder";
 

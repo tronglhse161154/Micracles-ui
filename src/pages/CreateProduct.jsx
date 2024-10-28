@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Container from "../components/ui/Container";
 import { useForm } from "react-hook-form";
-import { ClipLoader } from "react-spinners";
 import { LeftArrowIcon } from "../components/common/icons";
 import { Link, useNavigate } from "react-router-dom";
 import Upload from "../components/ui/Upload";
@@ -16,7 +15,6 @@ import nProgress from "nprogress";
 import "nprogress/nprogress.css";
 import toast from "react-hot-toast";
 
-const currentUser = (state) => state.users.currentUser;
 const selectUserId = (state) => state.users.currentUser?.ID;
 const selectUserEmail = (state) => state.users.currentUser?.Email;
 

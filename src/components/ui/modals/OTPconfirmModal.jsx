@@ -1,6 +1,5 @@
-"use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import { useForm } from "react-hook-form";

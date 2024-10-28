@@ -1,4 +1,4 @@
-"use client";
+
 import { FaDongSign } from "react-icons/fa6";
 import { NumericFormat } from "react-number-format";
 import { Controller } from "react-hook-form";
