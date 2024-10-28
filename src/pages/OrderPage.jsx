@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { fetchOrderDetails } from "../lib/api/Cart";
 import { paymentVNPay } from "../lib/api/Cart"; // Import function thanh toán
 import { useSelector } from "react-redux";
-import { Button } from "antd";
 import toast from "react-hot-toast";
 
 const OrderPage = () => {

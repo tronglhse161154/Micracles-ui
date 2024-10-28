@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { InfiniteMovingCards } from "./Infinite-card";
 import { Typography } from "antd";
