@@ -123,10 +123,13 @@ export const fetchOrderDetails = async (orderId) => {
 
 
 
-export const paymentVNPay = async (userId, orderId) => {
+export const paymentPayOs = async (userId, orderId) => {
   try {
     // Gửi userId và orderId dưới dạng query parameters
-    const response = await axiosClient.post(`/api/Payment/payment/vnpay`, null, {
+    const response = await axiosClient.post(`/api/PayOSOrder/create`, {
+      "returnUrl": "http://localhost:5000/Payment/result",
+      "cancelUrl": "http://localhost:5000/Payment/result"
+    }, {
       params: { 
         userId: userId,  // Truyền userId vào params
         orderId: orderId // Truyền orderId vào params
@@ -136,7 +139,7 @@ export const paymentVNPay = async (userId, orderId) => {
     console.log("UserID:", userId);
     console.log("OrderID:", orderId);
     
-    return response.data.url; // Trả về URL thanh toán
+    return response.data; // Trả về URL thanh toán
   } catch (error) {
     console.error('Payment API error:', error);
     throw error;

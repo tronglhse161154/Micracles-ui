@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchOrderDetails } from "../lib/api/Cart";
-import { paymentVNPay } from "../lib/api/Cart"; // Import function thanh toán
+import { fetchOrderDetails, paymentPayOs } from "../lib/api/Cart";
+ // Import function thanh toán
 import { useSelector } from "react-redux";
 import { Button } from "antd";
 import toast from "react-hot-toast";
@@ -30,9 +30,10 @@ const OrderPage = () => {
     console.log("Order ID:", orderDetails.id);
     if (currentUser && orderDetails) {
       try {
-        const paymentUrl = await paymentVNPay(currentUser.ID, orderDetails.id);
-        if (paymentUrl) {
-          window.location.href = paymentUrl; // Điều hướng người dùng tới URL VNPay
+        const res = await paymentPayOs(currentUser.ID, orderDetails.id);
+        console.log("🚀 ~ handlePayment ~ paymentUrl:", res)
+        if (res?.data?.checkoutUrl) {
+          window.location.href = res?.data?.checkoutUrl; // Điều hướng người dùng tới URL VNPay
         }
       } catch (error) {
         toast.error("Đã xảy ra lỗi khi thực hiện thanh toán");

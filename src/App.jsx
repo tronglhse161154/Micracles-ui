@@ -54,7 +54,7 @@ function App() {
           <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin/*" element={<AdminPage />} />
-          <Route path="/Payment/Success" element={<PaymentSuccess />} />
+          <Route path="/Payment/result" element={<PaymentSuccess />} />
           <Route path="/History/HistoryView" element={<HistoryView />} />
         </Routes>
       </div>

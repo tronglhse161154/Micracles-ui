@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://miracle-ashen.vercel.app/";
+export const BASE_URL = "https://localhost:7164";
 
 export const axiosClient = axios.create({
   baseURL: BASE_URL,
