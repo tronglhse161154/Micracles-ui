@@ -86,13 +86,15 @@ const HistoryView = () => {
                     <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:bg-blue-900">
                       <FaRegCalendarAlt />
                     </span>
+                    <Link to={`/Bill/${item.method}`}>
                     <Content
                       orderId={item.orderId}
                       status={item.status}
-                      description={`Phương thức thanh toán : ${item.method}`}
+                      description={`Phương thức thanh toán  : ${item.method}`}
                       price={formatPrice(item.amount)}
                       action="Trị giá :"
                     />
+                    </Link>
                   </li>
                 ))}
               </ol>

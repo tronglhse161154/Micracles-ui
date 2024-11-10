@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchOrderDetails, paymentPayOs } from "../lib/api/Cart";
- // Import function thanh toán
+// Import function thanh toán
 import { useSelector } from "react-redux";
 import { Button } from "antd";
 import toast from "react-hot-toast";
@@ -31,7 +31,7 @@ const OrderPage = () => {
     if (currentUser && orderDetails) {
       try {
         const res = await paymentPayOs(currentUser.ID, orderDetails.id);
-        console.log("🚀 ~ handlePayment ~ paymentUrl:", res)
+        console.log("🚀 ~ handlePayment ~ paymentUrl:", res);
         if (res?.data?.checkoutUrl) {
           window.location.href = res?.data?.checkoutUrl; // Điều hướng người dùng tới URL VNPay
         }
@@ -55,15 +55,19 @@ const OrderPage = () => {
           <h1 className="text-2xl mb-5">Chi tiết đơn hàng</h1>
           <div className="bg-white p-4 shadow-md rounded-lg">
             <div className="text-lg font-bold py-2">
-            Mã đơn hàng: {orderDetails.id}
+              Mã đơn hàng: {orderDetails.id}
             </div>
             <div className="text-lg font-bold py-2">
-            Ngày đặt hàng: {new Date(orderDetails.orderDate).toLocaleDateString()}
+              Ngày đặt hàng:{" "}
+              {new Date(orderDetails.orderDate).toLocaleDateString()}
             </div>
             <div className="text-lg font-bold py-2">
-                Tổng tiền: {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(orderDetails.totalPrice)}
-                  
-                </div>
+              Tổng tiền:{" "}
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(orderDetails.totalPrice)}
+            </div>
             {/* Thông tin sản phẩm */}
             {/* Render các sản phẩm trong orderProducts */}
           </div>
@@ -71,13 +75,15 @@ const OrderPage = () => {
 
         {/* Nút thanh toán */}
         <div className="bg-gray-100  rounded-lg shadow-md">
-          <h2 className="flex justify-center text-2xl font-bold mb-4 ">Thanh toán ngay</h2>
+          <h2 className="flex justify-center text-2xl font-bold mb-4 ">
+            Thanh toán ngay
+          </h2>
           <button
-              className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-20 hover:bg-blue-600"
-              onClick={handlePayment}
-            >
-              Thanh toán ngay
-            </button>
+            className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-20 hover:bg-blue-600"
+            onClick={handlePayment}
+          >
+            Thanh toán ngay
+          </button>
         </div>
       </div>
     </div>

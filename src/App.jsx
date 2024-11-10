@@ -24,6 +24,7 @@ import ProductDetail from "./pages/DetailPage";
 import OrderPage from "./pages/OrderPage";
 import PaymentSuccess from "./pages/Payment/Success";
 import HistoryView from "./pages/History/HistoryView";
+import DetailBill from "./pages/Payment/DetailBill";
 function App() {
   const currentUser = useSelector((state) => state.users.currentUser);
   const isAdmin = currentUser?.Role === "Admin";
@@ -56,6 +57,7 @@ function App() {
           <Route path="/admin/*" element={<AdminPage />} />
           <Route path="/Payment/result" element={<PaymentSuccess />} />
           <Route path="/History/HistoryView" element={<HistoryView />} />
+          <Route path="/Bill/:method" element={<DetailBill />} />
         </Routes>
       </div>
       {!shouldExcludeLayout && <Footer />}

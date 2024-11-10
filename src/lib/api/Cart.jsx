@@ -6,7 +6,7 @@ const addToCart = (userId, productId, quantity) => async (dispatch) => {
   try {
     const response = await axiosClient.post(`/api/CartProduct/user/${userId}`, {
       productId,
-      quantity,
+      quantity
     });
 
     if (response.status === 200) {
@@ -146,6 +146,18 @@ export const paymentPayOs = async (userId, orderId) => {
   }
 };
 
+
+export const DetailBillPayOs = async (method) => {
+  try {
+    const res = await axiosClient.get(`/api/PayOSOrder/${method}`, {
+    });
+    console.log("method", method);
+    return res.data;
+  } catch (error) {
+    console.error("error to fetch data");
+    throw error;
+  }
+}
 
 
 
