@@ -81,7 +81,7 @@ const OrderPage = () => {
             className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-20 hover:bg-blue-600"
             onClick={handlePayment}
           >
-            Thanh toán ngay cc
+            Thanh toán ngay
           </button>
         </div>
       </div>
