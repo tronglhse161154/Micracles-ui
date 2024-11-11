@@ -5,9 +5,6 @@ import {
   MailOutlined,
   LockOutlined,
   UserOutlined,
-  PhoneOutlined,
-  HeatMapOutlined,
-  HomeOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { registerUser } from "../lib/api/Authen";

@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect } from "react";
 import Container from "../../components/ui/Container";
@@ -13,7 +12,6 @@ import { getUserPayment } from "../../lib/api/Order";
 import Button from "../../components/ui/Button";
 
 const HistoryView = () => {
-  const dispatch = useDispatch();
   //const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [userHistory, setUserHistory] = useState([]);

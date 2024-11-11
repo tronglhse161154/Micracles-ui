@@ -6,15 +6,11 @@ import { useEffect } from "react";
 import { FlipWords } from "../components/ui/FlipWord";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProductWithSubCategory } from "../lib/api/Category";
-
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import { CardContainer, CardBody, CardItem } from "../components/ui/3dCard";
-import Button from "../components/ui/Button";
-import Container from "../components/ui/Container";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Pagination } from "antd";
-import nProgress, { start } from "nprogress";
+import nProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { Helmet } from "react-helmet";
 import { Border } from "../components/ui/MovingBorder";

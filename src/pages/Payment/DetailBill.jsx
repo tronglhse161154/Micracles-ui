@@ -54,12 +54,12 @@ function DetailBill() {
                 <h2 className=" flex justify-center font-semibold text-2xl tracking-wide mb-5">
                  Chi tiết đơn hàng
                 </h2>
-                <p className='text-xl py-3'>Phương thức: {apiData.data.orderCode}</p>
-                <p className='text-xl py-3'>Tổng số tiền : {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(apiData.data.amount)}</p>
-                <p className='text-xl py-3'>Số tiền đã trả: {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(apiData.data.amountPaid)}</p>
-                <p className='text-xl py-3'>Số tiền còn lại: {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(apiData.data.amountRemaining)}</p>
-                <p className='text-xl py-3'>Trạng thái: {translateStatus(apiData.data.status)}</p>
-                <p className='text-xl py-3'>Đơn hàng đã tạo vào ngày và giờ: {new Date(apiData.data.createdAt).toLocaleString()}</p>
+                <p className='text-xl py-3'>Phương thức: {apiData.data?.orderCode}</p>
+                <p className='text-xl py-3'>Tổng số tiền : {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(apiData.data?.amount)}</p>
+                <p className='text-xl py-3'>Số tiền đã trả: {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(apiData.data?.amountPaid)}</p>
+                <p className='text-xl py-3'>Số tiền còn lại: {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(apiData.data?.amountRemaining)}</p>
+                <p className='text-xl py-3'>Trạng thái: {translateStatus(apiData.data?.status)}</p>
+                <p className='text-xl py-3'>Đơn hàng đã tạo vào ngày và giờ: {new Date(apiData.data?.createdAt).toLocaleString()}</p>
                 <div className="mt-5">
                     <Link to="/History/HistoryView">
             <button className="bg-blue-500 text-white px-6 py-3 text-lg font-semibold rounded hover:bg-blue-600 transition duration-300">

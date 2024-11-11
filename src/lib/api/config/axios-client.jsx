@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://localhost:7164";
+export const BASE_URL = "https://micracle-hhbwbearg4a2d6gy.canadacentral-01.azurewebsites.net/";
 
 export const axiosClient = axios.create({
   baseURL: BASE_URL,

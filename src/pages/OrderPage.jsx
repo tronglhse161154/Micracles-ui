@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { fetchOrderDetails, paymentPayOs } from "../lib/api/Cart";
 // Import function thanh toán
 import { useSelector } from "react-redux";
-import { Button } from "antd";
 import toast from "react-hot-toast";
 
 const OrderPage = () => {
@@ -82,7 +81,7 @@ const OrderPage = () => {
             className="w-full bg-[#FFE8AC] text-lg font-bold py-2 px-4 rounded mt-20 hover:bg-blue-600"
             onClick={handlePayment}
           >
-            Thanh toán ngay
+            Thanh toán ngay cc
           </button>
         </div>
       </div>

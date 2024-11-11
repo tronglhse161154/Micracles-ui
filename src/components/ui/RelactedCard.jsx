@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import LazyLoad from "react-lazyload";
 import { Typography } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Pagination } from "antd";
-import nProgress, { start } from "nprogress";
 import "nprogress/nprogress.css";
 import { CardContainer, CardBody, CardItem } from "../ui/3dCard";
 import { fetchAllProducts } from "../../lib/api/Product";

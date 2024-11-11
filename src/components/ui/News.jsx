@@ -25,7 +25,7 @@ const News = () => {
         "Với giao diện trực quan, mọi người có thể dễ dàng tương tác và cập nhật thông tin ngay trên nền tảng. Hãy cùng đồng hành với chúng tôi để khám phá thế giới đa dạng của các trò chơi thẻ bài từ khắp nơi trên thế giới!",
       content: (
         <Image
-          src="https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/461321549_122118042920503109_1467123646096273988_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=hDe2p07DZKYQ7kNvgEytudn&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=AMee7NUcFOCyFXctZT1tCN4&oh=00_AYBRxmOPWoTPLQIJ7Mbr4qtBZdum6D1tzD9dwoQehP1vYw&oe=66FEC5DB"
+          src="https://images.unsplash.com/photo-1677545215971-3fef13ddc6b5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           width={350}
           height={350}
           className="h-full w-full object-cover"

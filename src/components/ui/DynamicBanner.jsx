@@ -9,7 +9,7 @@ const contentStyle = {
   background: "#364d79",
 };
 const DynamicBanner = ({ img1, img2 }) => {
-  const onChange = (currentSlide) => {
+  const onChange = () => {
   };
   return (
     <div className="relative">

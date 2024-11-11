@@ -1,5 +1,4 @@
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
@@ -12,7 +11,6 @@ import Home from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CartPage from "./pages/ViewCart";
-import DetailPage from "./pages/DetailPage";
 import CreatePage from "./pages/CreateProduct";
 import CategoryPage from "./pages/CategoryPage";
 import SearchModal from "./components/ui/modals/SearchModal";
