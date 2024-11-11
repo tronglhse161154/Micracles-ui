@@ -127,8 +127,8 @@ export const paymentPayOs = async (userId, orderId) => {
   try {
     // Gửi userId và orderId dưới dạng query parameters
     const response = await axiosClient.post(`/api/PayOSOrder/create`, {
-      "returnUrl": "http://localhost:5000/Payment/result",
-      "cancelUrl": "http://localhost:5000/Payment/result"
+      "returnUrl": "https://miracle-ashen.vercel.app/Payment/result",
+      "cancelUrl": "https://miracle-ashen.vercel.app/Payment/result"
     }, {
       params: { 
         userId: userId,  // Truyền userId vào params
