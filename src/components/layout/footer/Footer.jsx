@@ -45,9 +45,10 @@ const Footer = () => {
               Khám phá thế giới thẻ bài quanh bạn.
             </p>
             <div className="flex mt-8 space-x-6 text-gray-600">
+              
               <a
                 className="hover:opacity-75"
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61565093288120"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -56,30 +57,12 @@ const Footer = () => {
               </a>
               <a
                 className="hover:opacity-75"
-                href="#"
+                href="https://www.instagram.com/miracletradingcard/"
                 target="_blank"
                 rel="noreferrer"
               >
                 <span className="sr-only"> Instagram </span>
                 <FaInstagram size="30px" />
-              </a>
-              <a
-                className="hover:opacity-75"
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="sr-only"> Twitter </span>
-                <FaTwitter size="30px" />
-              </a>
-              <a
-                className="hover:opacity-75"
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="sr-only"> GitHub </span>
-                <FaGithub size="30px" />
               </a>
             </div>
           </div>
