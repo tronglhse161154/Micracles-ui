@@ -47,7 +47,7 @@ const Footer = () => {
             <div className="flex mt-8 space-x-6 text-gray-600">
               <a
                 className="hover:opacity-75"
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61565093288120"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -56,7 +56,7 @@ const Footer = () => {
               </a>
               <a
                 className="hover:opacity-75"
-                href="#"
+                href="https://www.instagram.com/miracletradingcard/"
                 target="_blank"
                 rel="noreferrer"
               >

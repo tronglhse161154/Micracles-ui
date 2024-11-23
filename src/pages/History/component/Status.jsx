@@ -5,11 +5,11 @@ const ActionStatus = ({ status }) => {
   let label;
 
   switch (status) {
-    case 1:
+    case 0:
       statusClass = "bg-green-500";
       label = "Thành công";
       break;
-    case 2:
+    case 1:
       statusClass = "bg-red-500";
       label = "Thất bại";
       break;
