@@ -8,11 +8,10 @@ import Users from "../components/ui/User";
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import CreateProduct from "./CreateProduct";
 import { useDispatch } from "react-redux";
-import {
-  clearCurrentUser,
-} from "../lib/redux/reducers/userSlice";
+import { clearCurrentUser } from "../lib/redux/reducers/userSlice";
 import ProtectedRoute from "../components/ProtectedRoute";
 import toast from "react-hot-toast";
+import PaymentTables from "../components/ui/PaymentTable";
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -62,13 +61,16 @@ const AdminPage = () => {
               <Link to="/admin/create">Thêm sản phẩm</Link>
             </Menu.Item>
           </SubMenu>
+          <Menu.Item key="5">
+            <Link to="/admin/payment">Quản lý giao dịch</Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background p-0 bg-white flex justify-end items-center">
-          <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
+          <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
             <div className="flex justify-end text-3xl py-2 px-6 cursor-pointer">
-            <UserOutlined/>
+              <UserOutlined />
             </div>
           </Dropdown>
         </Header>
@@ -77,6 +79,7 @@ const AdminPage = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/users" element={<Users />} />
             <Route path="/create" element={<CreateProduct />} />
+            <Route path="/payment" element={<PaymentTables />} />
             <Route path="/" element={<Dashboard />} />
           </Routes>
         </Content>
